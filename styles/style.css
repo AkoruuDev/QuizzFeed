@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 /*  font-family: 'Roboto', sans-serif;  */
 
 .banker {
@@ -38,6 +38,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.your-quizzes {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .without-quizz {
