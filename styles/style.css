@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
 /*  font-family: 'Roboto', sans-serif;  */
 
 .banker {
@@ -40,6 +40,11 @@
     align-items: center;
 }
 
+.your-quizzes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .without-quizz {
     width: 1051px;
     height: 181px;
@@ -79,4 +84,63 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    cursor: pointer;
+}
+
+.your-created-quizzes .title{
+    font-size: 20px;
+    font-weight: 700;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.your-created-quizzes .title ion-icon {
+    font-size: 40px;
+    color: var(--red);
+}
+
+.quizz {
+    width: 340px;
+    height: 181px;
+
+    border-radius: 5px;
+
+    position: relative;
+}
+
+.quizz img{
+    width: 340px;
+    height: 181px;
+
+    border-radius: 5px;
+
+    position: absolute;
+}
+
+.quizz .gradient {
+    width: 340px;
+    height: 181px;
+
+    border-radius: 5px;
+    background: var(--gradient-black);
+
+    position: absolute;
+    z-index: 1;
+}
+
+.quizz p {
+    color: var(--white);
+    font-size: 19px;
+
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1;
+}
+
+.none {
+    display: none;
 }
