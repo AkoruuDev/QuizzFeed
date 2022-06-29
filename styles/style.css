@@ -80,3 +80,28 @@
     justify-content: center;
     align-items: center;
 }
+
+.all-quizzes{
+    padding-top: 77px;
+}
+
+.all-quizzes-title{
+    padding-bottom: 12px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.all-quizzes-container{
+    width: 1051px;
+    display: grid;
+    background-color: rgb(67, 67, 155);
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.quizz-boxes{
+    width: 340px;
+    height: 181px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
