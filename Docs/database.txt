@@ -1,0 +1,47 @@
+Proposta feita por
+    Driven
+Numero do projeto
+    6
+Wakatime
+    projeto6-buzzquizz
+
+GitHub
+    Repositório
+        https://github.com/AkoruuDev/QuizzFeed
+    Deploy
+        https://akoruudev.github.io/QuizzFeed/
+
+Desenvolvedor
+    Akoruu Dev
+        https://github.com/akoruudev/
+        https://linkedin.com/in/akoruudev/
+    João Vitor Figueiredo
+        https://github.com/joaofpdmn/
+
+Database
+    Projeto
+        Data de Inicio
+            29-06-2022
+        Data de finalização
+            --/--/----
+        Data de entrega
+            --/--/----
+        Produção
+            00:00:00:00
+
+Tecnologias
+    HTML 5
+    CSS 3
+    JavaScript
+    API Server
+
+Integrações
+    fonts
+        ---
+
+    Ion-icons
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+
+        <ion-icon name="add-circle"></ion-icon> <!-- Add -->
+        <ion-icon name="trash-outline"></ion-icon> <!-- Lixeira -->
+        <ion-icon name="create-outline"></ion-icon> <!-- Create -->
