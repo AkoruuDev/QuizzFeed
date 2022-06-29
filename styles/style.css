@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+/*  font-family: 'Roboto', sans-serif;  */
+
+.banker {
+    font-family: 'Roboto', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.without-quizz {
+    width: 1051px;
+    height: 181px;
+
+    border: dashed var(--shaddow) 1px;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--text-base);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.without-quizz .content {
+    width: 250px;
+    height: 120px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-quizz {
+    width: 151px;
+    height: 40px;
+    margin: 8px;
+
+    border: dashed var(--red) 1px;
+    border-radius: 20px;
+    color: var(--red);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
