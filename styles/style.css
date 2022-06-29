@@ -3,7 +3,8 @@
 
 .banker {
     font-family: 'Roboto', sans-serif;
-
+    background-color: var(--background);
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,13 +27,13 @@
 
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 .quizzes {
-    width: 100%;
+    width: 80%;
     height: 100%;
-    padding: 100px;
+    padding: 100px 0px;
 
     display: flex;
     flex-direction: column;
@@ -41,8 +42,11 @@
 }
 
 .your-quizzes {
+    width: 100%;
+
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .without-quizz {
@@ -102,9 +106,15 @@
     color: var(--red);
 }
 
+.my-quizzes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .quizz {
     width: 340px;
     height: 181px;
+    margin: 8px;
 
     border-radius: 5px;
 
