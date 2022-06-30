@@ -1,0 +1,14 @@
+.createNewQuizz .next:hover {
+    cursor: pointer;
+    background-color: var(--hover-red);
+}
+
+.create-quizz:hover {
+    cursor: pointer;
+    background-color: var(--hover-background);
+}
+
+.basicsInfo .content input:hover, .basicsInfo .content input:focus {
+    background-color: var(--hover-white);
+    color: var(--black);
+}
