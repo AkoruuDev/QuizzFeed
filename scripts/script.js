@@ -36,7 +36,6 @@ function getOneQuizz(){
     let quizzSelected = document.querySelector('.quizz-selected');
     allPage.classList.add("none");
     quizzSelected.classList.remove("none");
-    
 }
 
 
