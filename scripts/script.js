@@ -16,3 +16,9 @@ function connectionError(response){
     alert("Deu erro, iremos reiniciar a página!");
     window.location.reload();
 }
+function createQuizz() {
+    let quizzes = document.querySelector(".quizzes");
+    let createNewQuizz = document.querySelector(".newQuizz");
+    quizzes.classList.add("none");
+    createNewQuizz.classList.remove("none");
+}
