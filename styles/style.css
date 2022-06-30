@@ -145,7 +145,7 @@
 .all-quizzes-container { /*  Joao Vitor - Feito não mexer   */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .your-created-quizzes .title { /* AkoruuDev - Feito não mexer   */
@@ -165,7 +165,7 @@
 .my-quizzes { /*  AkoruuDev - Feito não mexer   */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .newQuizz, .createNewQuizz { /* AkoruuDev - Feito não mexer */
