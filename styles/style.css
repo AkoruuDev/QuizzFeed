@@ -3,6 +3,7 @@
 
 .banker {
     font-family: 'Roboto', sans-serif;
+    background-color: var(--background);
 
     display: flex;
     flex-direction: column;
@@ -26,13 +27,13 @@
 
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 .quizzes {
-    width: 100%;
+    width: 80%;
     height: 100%;
-    padding: 100px;
+    padding: 100px 0px;
 
     display: flex;
     flex-direction: column;
@@ -41,8 +42,11 @@
 }
 
 .your-quizzes {
+    width: 100%;
+
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .without-quizz {
@@ -109,4 +113,58 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.your-created-quizzes .title ion-icon {
+    font-size: 40px;
+    color: var(--red);
+}
+
+.my-quizzes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.quizz {
+    width: 340px;
+    height: 181px;
+    margin: 8px;
+
+    border-radius: 5px;
+
+    position: relative;
+}
+
+.quizz img{
+    width: 340px;
+    height: 181px;
+
+    border-radius: 5px;
+
+    position: absolute;
+}
+
+.quizz .gradient {
+    width: 340px;
+    height: 181px;
+
+    border-radius: 5px;
+    background: var(--gradient-black);
+
+    position: absolute;
+    z-index: 1;
+}
+
+.quizz p {
+    color: var(--white);
+    font-size: 19px;
+
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1;
+}
+
+.none {
+    display: none;
 }
