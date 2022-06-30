@@ -105,7 +105,6 @@
 .all-quizzes-container{
     width: 1051px;
     display: grid;
-    background-color: rgb(67, 67, 155);
     grid-template-columns: 1fr 1fr 1fr;
 }
 
@@ -127,7 +126,7 @@
     flex-wrap: wrap;
 }
 
-.quizz {
+.quizz-boxes {
     width: 340px;
     height: 181px;
     margin: 8px;
@@ -137,7 +136,7 @@
     position: relative;
 }
 
-.quizz img{
+.quizz-boxes img{
     width: 340px;
     height: 181px;
 
@@ -146,7 +145,7 @@
     position: absolute;
 }
 
-.quizz .gradient {
+.quizz-boxes .gradient {
     width: 340px;
     height: 181px;
 
@@ -157,7 +156,7 @@
     z-index: 1;
 }
 
-.quizz p {
+.quizz-boxes p {
     color: var(--white);
     font-size: 19px;
 
