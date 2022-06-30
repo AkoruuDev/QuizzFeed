@@ -1,10 +1,22 @@
 HTML
-    Botões de acesso serão sempre <button></button>
-    
+    há dois tipos de botões
+        padrão <button></button>
+        voltar <button class="back"></button>
+
 CSS
     .none {
         display: none;
     }
     Deve ficar SEMPRE como ultimo estilo (nas ultimas linhas do arquivo)
+
+    button {
+
+    }
+    todos os botões devem ter o mesmo estilo no CSS
+    
+    Exceto para botões de back-home que recebe a class="back"
+    button .back {
+
+    }
     
 JS

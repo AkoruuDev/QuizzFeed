@@ -105,7 +105,7 @@
     align-items: center;
 }
 
-.without-quizz .content { /*  AkoruuDev   */
+.without-quizz .content { /*  AkoruuDev - Feito não mexer   */
     width: 250px;
     height: 120px;
 
@@ -117,7 +117,7 @@
     align-items: center;
 }
 
-.create-quizz { /*  AkoruuDev   */
+.create-quizz { /*  AkoruuDev  - Feito não mexer    */
     width: 151px;
     height: 40px;
     margin: 8px;
@@ -132,36 +132,79 @@
     align-items: center;
 }
 
-.all-quizzes { /*  Joao Vitor   */
+.all-quizzes { /*  Joao Vitor - feito não mexer     */
     padding-top: 77px;
 }
 
-.all-quizzes-title {
+.all-quizzes-title { /* Joao Vitor - Feito não mexer    */
     padding-bottom: 12px;
     font-weight: 700;
     font-size: 20px;
 }
 
-.all-quizzes-container { /*  Joao Vitor   */
-    width: 1051px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.all-quizzes-container { /*  Joao Vitor - Feito não mexer   */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.your-created-quizzes .title ion-icon { /*  AkoruuDev   */
+.your-created-quizzes .title ion-icon { /*  AkoruuDev - Feito não mexer */
     font-size: 40px;
     color: var(--red);
 }
 
-.my-quizzes { /*  AkoruuDev   */
+.my-quizzes { /*  AkoruuDev - Feito não mexer   */
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.newQuizz, .createNewQuizz { /* AkoruuDev - Feito não mexer */
+    width: 80%;
 }
 
 .basicsInfo { /*  AkoruuDev - Feito não mexer   */
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.basicsInfo .content { /* AkoruuDev - Feito não mexer */
+    width: 100%;
+    padding: 25px 20px;
+
+    background-color: var(--white);
+    box-shadow: 0 4px 10px 4px var(--shaddow);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.basicsInfo .content input { /* AkoruuDev - Feito não mexer */
+    width: 100%;
+    height: 45px;
+    margin: 10px 0px;
+    padding: 18px;
+
+    font-size: 21px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-base);
+    border: solid var(--text-base) 1px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.basicsInfo .content p { /* AkoruuDev - Feito não mexer */
+    padding-left: 18px;
+
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 400;
+    font-style: italic;
 }
 
 .quizz-selected {
@@ -176,30 +219,6 @@
 .quizz-banner {
     position: relative;
     text-align: center;
-}
-
-.basicsInfo .content p {
-    padding-left: 18px;
-
-    color: var(--red);
-    font-size: 12px;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.next {
-    width: 50%;
-    height: 54px;
-    padding: 5px;
-
-    background-color: var(--red);
-    color: var(--white);
-    border-radius: 25px;
-    border: none;
-    box-sizing: border-box;
-    outline: none;
-    font-size: 19px;
-    font-weight: 400;
 }
 
 .quizz-banner img {
@@ -289,42 +308,29 @@
     box-shadow: 0px 19px 12px -16px var(--shaddow);
 }
 
-.result-img {
+.result-img { /*    Joao Vitor - Feito não mexer    */
     width: 50%;
     float: left;
 }
 
-.final-message {
+.final-message { /* Joao Vitor - Feito não mexer    */
     width: 47%;
     float: right;
     padding-left: 21px;
-    color: #484848;
+    color: var(--black);
     font-size: 19px;
     font-weight: 700;
 }
 
-.button-container{
+.button-container{ /*   Joao Vitor - Feito não mexer    */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.restart-quizz{
-    width: 260px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: #EC362D;
-    color: white;
-    font-size: 21px;
-    font-weight: 400;
-    outline: none;
-    border: none;
-    height: 52px;
-    border-radius: 15px;
-}
-
-.back-home{
+.back{ /*   geral - Feito não mexer   */
+    margin-top: 0;
     margin-bottom: 85px;
     outline: none;
     border: none;
@@ -333,6 +339,23 @@
     font-size: 21px;
     font-weight: 400;
 }
+
+button { /* geral - Feito não mexer  */
+    width: 50%;
+    height: 54px;
+    padding: 5px;
+    margin: 30px 0px;
+
+    background-color: var(--red);
+    color: var(--white);
+    font-size: 21px;
+    font-weight: 400;
+    
+    border-radius: 25px;
+    border: none;
+    outline: none;
+}
+
 
 .none { /*  geral - Feito não mexer */
     display: none;
