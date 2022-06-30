@@ -12,3 +12,13 @@
     background-color: var(--hover-white);
     color: var(--black);
 }
+
+.restart-quizz:hover{
+    cursor: pointer;
+    background-color: var(--hover-red);
+}
+
+.back:hover{
+    cursor: pointer;
+    color: var(--hover-text-base);
+}
