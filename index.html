@@ -114,7 +114,7 @@
         <main class="newQuizz none">
             <div class="createNewQuizz">
                 <div class="basicsInfo">
-                    Comece pelo começo
+                    <h2 class="titleNewQuizz">Comece pelo começo</h2>
                     <div class="content">
                         <input type="text" class="basicsInfo-content" placeholder="Titulo do seu quizz">
                         <p class="error none">O titulo deve ter entre 20 e 36 caracteres</p>
@@ -128,59 +128,65 @@
                     <button class="next" onclick="goToCreateQuestions()">Prosseguir para criar perguntas</button>
                 </div>
 
-                <div class="questionsNewQuizz none">
-                    Crie suas perguntas
-                    <div class="content">
-                        <ol>
-                            <li class="Question1">
-                                Pergunta 1
+                <div class="questionsNewQuizz">
+                    <h2 class="titleNewQuizz">Crie suas perguntas</h2>
+                    <ol class="bas-content">
+                        <li class="content Question1">
+                            <div class="closedQuestion">
+                                <p class="areaTitle">Pergunta 1</p>
+                                <ion-icon name="create-outline" onclick="openQuestionSelected()"></ion-icon> <!-- Create -->
+                            </div>
+                            <div class="openQuestion none">
+                                <p class="areaTitle">Pergunta 1</p>
                                 <input type="text" placeholder="Texto da pergunta">
                                 <input type="text" placeholder="Cor de fundo da pergunta">
-                                Resposta correta
+                                <p class="areaTitle">Resposta correta</p>
                                 <input type="text" placeholder="Resposta correta">
                                 <input type="text" placeholder="URL da imagem">
-                                Respostas incorretas
+                                <p class="areaTitle">Respostas incorretas</p>
                                 <input type="text" placeholder="Resposta incorreta 1">
                                 <input type="text" placeholder="URL da imagem 1">
+                                <br>
                                 <input type="text" placeholder="Resposta incorreta 2">
                                 <input type="text" placeholder="URL da imagem 2">
+                                <br>
                                 <input type="text" placeholder="Resposta incorreta 3">
                                 <input type="text" placeholder="URL da imagem 3">
-                            </li>
+                            </div>
+                        </li>
 
-                            <li class="Question2">
-                                Pergunta 2
-                                <input type="text" placeholder="Texto da pergunta">
-                                <input type="text" placeholder="Cor de fundo da pergunta">
-                                Resposta correta
-                                <input type="text" placeholder="Resposta correta">
-                                <input type="text" placeholder="URL da imagem">
-                                Respostas incorretas
-                                <input type="text" placeholder="Resposta incorreta 1">
-                                <input type="text" placeholder="URL da imagem 1">
-                                <input type="text" placeholder="Resposta incorreta 2">
-                                <input type="text" placeholder="URL da imagem 2">
-                                <input type="text" placeholder="Resposta incorreta 3">
-                                <input type="text" placeholder="URL da imagem 3">
-                            </li>
+                        <li class="content Question2">
+                            Pergunta 2
+                            <input type="text" placeholder="Texto da pergunta">
+                            <input type="text" placeholder="Cor de fundo da pergunta">
+                            Resposta correta
+                            <input type="text" placeholder="Resposta correta">
+                            <input type="text" placeholder="URL da imagem">
+                            Respostas incorretas
+                            <input type="text" placeholder="Resposta incorreta 1">
+                            <input type="text" placeholder="URL da imagem 1">
+                            <input type="text" placeholder="Resposta incorreta 2">
+                            <input type="text" placeholder="URL da imagem 2">
+                            <input type="text" placeholder="Resposta incorreta 3">
+                            <input type="text" placeholder="URL da imagem 3">
+                        </li>
 
-                            <li class="Question3">
-                                Pergunta 3
-                                <input type="text" placeholder="Texto da pergunta">
-                                <input type="text" placeholder="Cor de fundo da pergunta">
-                                Resposta correta
-                                <input type="text" placeholder="Resposta correta">
-                                <input type="text" placeholder="URL da imagem">
-                                Respostas incorretas
-                                <input type="text" placeholder="Resposta incorreta 1">
-                                <input type="text" placeholder="URL da imagem 1">
-                                <input type="text" placeholder="Resposta incorreta 2">
-                                <input type="text" placeholder="URL da imagem 2">
-                                <input type="text" placeholder="Resposta incorreta 3">
-                                <input type="text" placeholder="URL da imagem 3">
-                            </li>
-                        </ol>
-                    </div>
+                        <li class="content Question3">
+                            Pergunta 3
+                            <input type="text" placeholder="Texto da pergunta">
+                            <input type="text" placeholder="Cor de fundo da pergunta">
+                            Resposta correta
+                            <input type="text" placeholder="Resposta correta">
+                            <input type="text" placeholder="URL da imagem">
+                            Respostas incorretas
+                            <input type="text" placeholder="Resposta incorreta 1">
+                            <input type="text" placeholder="URL da imagem 1">
+                            <input type="text" placeholder="Resposta incorreta 2">
+                            <input type="text" placeholder="URL da imagem 2">
+                            <input type="text" placeholder="Resposta incorreta 3">
+                            <input type="text" placeholder="URL da imagem 3">
+                        </li>
+                    </ol>
                     <button class="next">Prosseguir para criar níveis</button>
                 </div>
             </div>

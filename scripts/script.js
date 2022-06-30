@@ -126,7 +126,6 @@ function getOneQuizz(){ // Começar quizz
     
 }
 
-
-
-
-
+function openQuestionSelected(element) {
+    element.querySelector
+}
