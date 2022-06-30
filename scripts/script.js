@@ -23,3 +23,23 @@ function createQuizz() {
     quizzes.classList.add("none");
     createNewQuizz.classList.remove("none");
 }
+
+
+let oneQuizzPromise = axios.get(`${APIprefix}quizzes/${quizzID}`);
+oneQuizzPromise.then(getOneQuizz);
+oneQuizzPromise.catch(connectionError);
+
+function getOneQuizz(){
+    //create class for one quizz
+    //change inner.html
+    let allPage = document.querySelector('.quizzes');
+    let quizzSelected = document.querySelector('.quizz-selected');
+    allPage.classList.add("none");
+    quizzSelected.classList.remove("none");
+    
+}
+
+
+
+
+
