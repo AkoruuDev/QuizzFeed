@@ -1,0 +1,10 @@
+HTML
+    Botões de acesso serão sempre <button></button>
+    
+CSS
+    .none {
+        display: none;
+    }
+    Deve ficar SEMPRE como ultimo estilo (nas ultimas linhas do arquivo)
+    
+JS

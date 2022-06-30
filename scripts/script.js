@@ -17,14 +17,14 @@ function connectionError(response){
     window.location.reload();
 }
 
-function createQuizz() {
+function createQuizz() { // Criar novo quizz
     let pageOff = document.querySelector(".quizzes");
     let pageOn = document.querySelector(".newQuizz");
     pageOff.classList.add("none");
     pageOn.classList.remove("none");
 }
 
-function goToCreateQuestions() {
+function goToCreateQuestions() { // Ir para criação de questões
     const pageOff = document.querySelector(".basicsInfo");
     const pageOn = document.querySelector(".questionsNewQuizz");
     const takes = document.querySelectorAll(".basicsInfo-content");
@@ -46,7 +46,7 @@ function goToCreateQuestions() {
     }
 }
 
-function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) {
+function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // Tratamento de erros para criação de novo quizz - Informações básicas
     let retTitle = false;
     let retURLnq = false;
     let retQuantAsks = false;
@@ -98,13 +98,13 @@ function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) {
     return retTitle && retURLnq && retQuantAsks && retQuantLevel;
 }
 
-function showErroInfoBasics(pos) {
+function showErroInfoBasics(pos) { // Tratamento de erros para criação de novo quizz - Informações básicas
     let error = document.querySelectorAll(".createNewQuizz .basicsInfo .content .error");
 
     error[pos].classList.remove("none");
 }
 
-function checkErroInfoBasics(pos) {
+function checkErroInfoBasics(pos) { // Tratamento de erros para criação de novo quizz - Informações básicas
     let error = document.querySelectorAll(".createNewQuizz .basicsInfo .content .error");
 
     if (!error[pos].classList.contains("none")) {
@@ -116,7 +116,7 @@ let oneQuizzPromise = axios.get(`${APIprefix}quizzes/${quizzID}`);
 oneQuizzPromise.then(getOneQuizz);
 oneQuizzPromise.catch(connectionError);
 
-function getOneQuizz(){
+function getOneQuizz(){ // Começar quizz
     //create class for one quizz
     //change inner.html
     let allPage = document.querySelector('.quizzes');
