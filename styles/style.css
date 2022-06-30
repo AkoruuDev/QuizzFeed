@@ -2,6 +2,9 @@
 /*  font-family: 'Roboto', sans-serif;  */
 
 .banker {
+    width: 100%;
+    height: 100%;
+
     font-family: 'Roboto', sans-serif;
     background-color: var(--background);
 
@@ -30,7 +33,7 @@
     z-index: 2;
 }
 
-.quizzes, .newQuizz {
+.quizzes, .newQuizz, .createNewQuizz, .basicsInfo {
     width: 80%;
     height: 100%;
     padding: 100px 0px;
@@ -167,9 +170,51 @@
 }
 
 .basicsInfo {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.basicsInfo .content {
+    width: 100%;
+    height: 100%;
+
+    padding: 10px 20px;
+    margin: 40px 0px;
+
+    box-shadow: 0px 4px 40px 4px var(--shaddow);
+    background-color: var(--white);
+
     display: flex;
     flex-direction: column;
+}
+
+.basicsInfo .content input {
+    width: 100%;
+    height: 46px;
+    margin: 10px 0px;
+    padding: 15px;
+
+    border: solid var(--text-base) 1px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 19px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-base);
+}
+
+.createNewQuizz .next {
+    width: 50%;
+    height: 54px;
+    padding: 15px;
+
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: 25px;
+
+    display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .none {
