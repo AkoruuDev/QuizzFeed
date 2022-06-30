@@ -3,11 +3,13 @@
     --black: #000000;
     --background: #E5E5E5;
     --white: #FFFFFF;
-    --shaddow: #808080;
+    --shaddow: #00000038;
     --text-base: #BABABA;
     --gradient-black: linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
 }
 
 :root { /*  UX / hover   */
-    --hover-red: #bd3129;
+    --hover-red: #c40d04;
+    --hover-background: #cac2c2;
+    --hover-white: #e9e3e3;
 }
