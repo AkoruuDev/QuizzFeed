@@ -201,7 +201,16 @@
     color: var(--text-base);
 }
 
-.createNewQuizz .next {
+.basicsInfo .content p {
+    padding-left: 18px;
+
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.next {
     width: 50%;
     height: 54px;
     padding: 15px;
@@ -209,6 +218,8 @@
     background-color: var(--red);
     color: var(--white);
     border-radius: 25px;
+    font-size: 19px;
+    font-weight: 400;
 
     display: flex;
     justify-content: center;

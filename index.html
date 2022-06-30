@@ -114,12 +114,16 @@
                 <div class="basicsInfo">
                     Comece pelo começo
                     <div class="content">
-                        <input type="text" placeholder="Titulo do seu quizz">
-                        <input type="text" placeholder="URL da imagem do seu quizz">
-                        <input type="text" placeholder="Quantidade de perguntas do quizz">
-                        <input type="text" placeholder="Quantidade de níveis do quizz">
+                        <input type="text" class="basicsInfo-content" placeholder="Titulo do seu quizz">
+                        <p class="error none">O titulo deve ter entre 20 e 36 caracteres</p>
+                        <input type="text" class="basicsInfo-content" placeholder="URL da imagem do seu quizz">
+                        <p class="error none">Este campo deve estar no formato URL (de link)</p>
+                        <input type="text" class="basicsInfo-content" placeholder="Quantidade de perguntas do quizz">
+                        <p class="error none">No mínimo 3 perguntas</p>
+                        <input type="text" class="basicsInfo-content" placeholder="Quantidade de níveis do quizz">
+                        <p class="error none">no mínimo 2 níveis</p>
                     </div>
-                    <div class="next">Prosseguir para criar perguntas</div>
+                    <div class="next" onclick="goToCreateQuestions()">Prosseguir para criar perguntas</div>
                 </div>
 
                 <div class="questionsNewQuizz none">
@@ -143,7 +147,7 @@
                             </li>
                         </ol>
                     </div>
-                    <div class="next">Prosseguir para criar perguntas</div>
+                    <div class="next">Prosseguir para criar níveis</div>
                 </div>
             </div>
         </main>
