@@ -52,11 +52,45 @@ function goToCreateQuestions() { // Ir para criação de questões
 
     let next = checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel);
     if (next) {
+        createQuestionsArea(QuantAsks);
+
         pageOff.classList.add("none");
         pageOn.classList.remove("none");
     }
 }
 
+function createQuestionsArea(QuantAsks) {
+    const print = document.querySelector(".bas-content");
+    print.innerHTML = ""
+
+    for (let i = 1; i <= QuantAsks; i ++) {
+        let messagePrint = `
+            <li class="content Question${i}">
+                <div class="closedQuestion" onclick="openQuestionSelected()">
+                    <p class="areaTitle">Pergunta ${i}</p>
+                    <ion-icon name="create-outline"></ion-icon> <!-- Create -->
+                </div>
+                <div class="none">
+                    <p class="areaTitle">Pergunta ${i}</p>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    Resposta correta
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+                    Respostas incorretas
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="text" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="text" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="text" placeholder="URL da imagem 3">
+                </div>
+            </li>
+        ` 
+
+        print.innerHTML += messagePrint;
+    }
+}
 function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // Tratamento de erros para criação de novo quizz - Informações básicas
     let retTitle = false;
     let retURLnq = false;
