@@ -14,7 +14,7 @@
     align-items: center;
 }
 
-.top { /*   geral - Feito não mexer   */
+.top {
     width: 100%;
     height: 69px;
 
@@ -34,7 +34,7 @@
 }
 
 .quizzes,
-.newQuizz { /*  geral - Feito não mexer   */
+.newQuizz {
     width: 80%;
     height: 100%;
     padding: 100px 0px;
@@ -88,10 +88,11 @@
 .back{ /*   geral - Feito não mexer   */
     margin-top: 0;
     margin-bottom: 85px;
+    cursor: pointer;
     outline: none;
     border: none;
     background: transparent;
-    color: var(--text-base);
+    color: #818181;
     font-size: 21px;
     font-weight: 400;
 }

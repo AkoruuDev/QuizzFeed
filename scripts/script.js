@@ -7,14 +7,25 @@ allQuizzesPromise.then(getAllQuizzes);
 allQuizzesPromise.catch(connectionError);
 
 
-function getAllQuizzes(response){
+function getAllQuizzes(response) {
     allQuizzes = response.data;
     console.log(allQuizzes);
 }
 
-function connectionError(response){
+function connectionError(response) {
     alert("Deu erro, iremos reiniciar a página!");
     window.location.reload();
+}
+
+function renderizeAllQuizzes() {
+    const allQuizzesContainer = document.querySelectorAll('.all-quizzes-container');
+    for (let i = 0; i < allQuizzes.length; i++) {
+        allQuizzesContainer.innerHTML += `<div class="quizz-boxes" onclick="getOneQuizz(this)">
+        <img src="${allQuizzes[i].image}" alt="Image">
+        <div class="gradient"></div>
+        <p class="title">${allQuizzes[i].title}</p>
+    </div>`
+    }
 }
 
 function createQuizz() { // Criar novo quizz
@@ -52,7 +63,7 @@ function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // 
     let retQuantAsks = false;
     let retQuantLevel = false;
     let pos;
-    
+
     if (title.length >= 20 && title.length <= 36) {
         retTitle = true;
         pos = 0;
@@ -70,7 +81,7 @@ function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // 
         checkErroInfoBasics(pos);
 
         console.log(retURLnq);
-    } catch(err) {
+    } catch (err) {
         pos = 1;
         showErroInfoBasics(pos);
     }
@@ -116,16 +127,90 @@ let oneQuizzPromise = axios.get(`${APIprefix}quizzes/${quizzID}`);
 oneQuizzPromise.then(getOneQuizz);
 oneQuizzPromise.catch(connectionError);
 
-function getOneQuizz(){ // Começar quizz
+function getOneQuizz() { // Começar quizz
     //create class for one quizz
     //change inner.html
     let allPage = document.querySelector('.quizzes');
     let quizzSelected = document.querySelector('.quizz-selected');
     allPage.classList.add("none");
-    quizzSelected.classList.remove("none");
-    
+    quizzSelected.innerHTML += `<div class="quizz-banner">
+    <img src="./images/test.jpg" alt="">
+    <p class="quizz-question">O quão potterhead é voce?</p>
+    </div>`
+
+    //esse número 4 corresponde a quantidade de perguntas requisitadas
+    for (let i = 0; i < 4; i++) {
+        quizzSelected.innerHTML += `<section class="selected-content">
+        <div class="quizz-selected-container">
+            <div class="question-container">
+                <div class="question-container-title">
+                    <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
+                </div>
+                <div class="question-img-container">
+                    <div>
+                        <img src="./images/test.jpg" alt="" class="question-img">
+                        <p class="answer">teste</p>
+                    </div>
+                    <div>
+                        <img src="./images/test.jpg" alt="" class="question-img">
+                        <p class="answer">teste</p>
+                    </div>
+                    <div>
+                        <img src="./images/test.jpg" alt="" class="question-img">
+                        <p class="answer">teste</p>
+                    </div>
+                    <div>
+                        <img src="./images/test.jpg" alt="" class="question-img">
+                        <p class="answer">teste</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>`    
+    }
+
+
+    quizzSelected.innerHTML += `<section class="selected-content">
+    <div class="quizz-selected-container">
+    <div class="result">
+                        <div>
+                            <h1 class="result-title">88% de acerto: Você é praticamente um aluno de Hogwarts!</h1>
+                            <img src="./images/test.jpg" alt="" class="result-img">
+                            <p class="final-message">
+                                Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique
+                                no botão abaixo para usar o vira-tempo e reiniciar este teste.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button class="restart-quizz">
+                            Reiniciar quizz
+                        </button>
+                        <button class="back-home">
+                            Voltar para Home
+                        </button>
+                    </div>
+                </div>
+            </section>`;
 }
 
-function openQuestionSelected(element) {
-    element.querySelector
+
+
+
+function getQuizzID() {
+
 }
+
+function renderizeSelectedQuizz() {
+
+}
+
+
+renderizeAllQuizzes();
+
+
+
+
+
+
+
