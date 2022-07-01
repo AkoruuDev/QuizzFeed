@@ -27,45 +27,15 @@
                 <div class="without-quizz">
                     <div class="content">
                         Você não criou nenhum quizz ainda :(
-                        <button class="create-quizz" onclick="createQuizz()">Criar Quizz</button>
+                        <div class="create-quizz" onclick="createQuizz()">Criar Quizz</div>
                     </div>
                 </div>
-                <div class="your-created-quizzes">   <!--none aqui-->
+                <div class="your-created-quizzes none">
                     <div class="title">
                         Seus Quizzes
                         <ion-icon name="add-circle" onclick="createQuizz()"></ion-icon> <!-- Add -->
                     </div>
-                    <div class="my-quizzes">
-                        <div class="quizz-boxes">
-                            <img src="images/test.jpg" alt="Image">
-                            <div class="gradient"></div>
-                            <p class="title">O quanto você é de boas?</p>
-                        </div>
-
-                        <div class="quizz-boxes">
-                            <img src="images/test.jpg" alt="Image">
-                            <div class="gradient"></div>
-                            <p class="title">O quanto você é de boas?</p>
-                        </div>
-
-                        <div class="quizz-boxes">
-                            <img src="images/test.jpg" alt="Image">
-                            <div class="gradient"></div>
-                            <p class="title">O quanto você é de boas?</p>
-                        </div>
-
-                        <div class="quizz-boxes">
-                            <img src="images/test.jpg" alt="Image">
-                            <div class="gradient"></div>
-                            <p class="title">O quanto você é de boas?</p>
-                        </div>
-
-                        <div class="quizz-boxes">
-                            <img src="images/test.jpg" alt="Image">
-                            <div class="gradient"></div>
-                            <p class="title">O quanto você é de boas?</p>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="all-quizzes">
@@ -116,20 +86,12 @@
                 <div class="basicsInfo">
                     Comece pelo começo
                     <div class="content">
-                        <input type="text" class="basicsInfo-content" placeholder="Titulo do seu quizz">
-                        <p class="error none">O titulo deve ter entre 20 e 36 caracteres</p>
-                        <p class="error-null none">Este campo deve estar preenchido</p>
-                        <input type="text" class="basicsInfo-content" placeholder="URL da imagem do seu quizz">
-                        <p class="error none">Este campo deve estar no formato URL (de link)</p>
-                        <p class="error-null none">Este campo deve estar preenchido</p>
-                        <input type="text" class="basicsInfo-content" placeholder="Quantidade de perguntas do quizz">
-                        <p class="error none">No mínimo 3 perguntas</p>
-                        <p class="error-null none">Este campo deve estar preenchido</p>
-                        <input type="text" class="basicsInfo-content" placeholder="Quantidade de níveis do quizz">
-                        <p class="error none">no mínimo 2 níveis</p>
-                        <p class="error-null none">Este campo deve estar preenchido</p>
+                        <input type="text" placeholder="Titulo do seu quizz">
+                        <input type="text" placeholder="URL da imagem do seu quizz">
+                        <input type="text" placeholder="Quantidade de perguntas do quizz">
+                        <input type="text" placeholder="Quantidade de níveis do quizz">
                     </div>
-                    <button class="next" onclick="goToCreateQuestions()">Prosseguir para criar perguntas</button>
+                    <div class="next">Prosseguir para criar perguntas</div>
                 </div>
 
                 <div class="questionsNewQuizz none">
@@ -151,163 +113,16 @@
                                 <input type="text" placeholder="Resposta incorreta 3">
                                 <input type="text" placeholder="URL da imagem 3">
                             </li>
-
-                            <li class="Question2">
-                                Pergunta 2
-                                <input type="text" placeholder="Texto da pergunta">
-                                <input type="text" placeholder="Cor de fundo da pergunta">
-                                Resposta correta
-                                <input type="text" placeholder="Resposta correta">
-                                <input type="text" placeholder="URL da imagem">
-                                Respostas incorretas
-                                <input type="text" placeholder="Resposta incorreta 1">
-                                <input type="text" placeholder="URL da imagem 1">
-                                <input type="text" placeholder="Resposta incorreta 2">
-                                <input type="text" placeholder="URL da imagem 2">
-                                <input type="text" placeholder="Resposta incorreta 3">
-                                <input type="text" placeholder="URL da imagem 3">
-                            </li>
-
-                            <li class="Question3">
-                                Pergunta 3
-                                <input type="text" placeholder="Texto da pergunta">
-                                <input type="text" placeholder="Cor de fundo da pergunta">
-                                Resposta correta
-                                <input type="text" placeholder="Resposta correta">
-                                <input type="text" placeholder="URL da imagem">
-                                Respostas incorretas
-                                <input type="text" placeholder="Resposta incorreta 1">
-                                <input type="text" placeholder="URL da imagem 1">
-                                <input type="text" placeholder="Resposta incorreta 2">
-                                <input type="text" placeholder="URL da imagem 2">
-                                <input type="text" placeholder="Resposta incorreta 3">
-                                <input type="text" placeholder="URL da imagem 3">
-                            </li>
                         </ol>
                     </div>
-                    <button class="next">Prosseguir para criar níveis</button>
+                    <div class="next">Prosseguir para criar perguntas</div>
                 </div>
             </div>
         </main>
-        <main class="quizz-selected">   <!--none aqui-->
-            <div class="quizz-banner">
-                <img src="./images/test.jpg" alt="">
-                <p class="quizz-question">O quão potterhead é voce?</p>
-            </div>
-            <section class="selected-content">
-                <div class="quizz-selected-container">
-                    <div class="question-container">
-                        <div class="question-container-title">
-                            <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
-                        </div>
-                        <div class="question-img-container">
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="question-container">
-                        <div class="question-container-title">
-                            <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
-                        </div>
-                        <div class="question-img-container">
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="question-container">
-                        <div class="question-container-title">
-                            <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
-                        </div>
-                        <div class="question-img-container">
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="question-container">
-                        <div class="question-container-title">
-                            <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
-                        </div>
-                        <div class="question-img-container">
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="result">
-                        <div>
-                            <h1 class="result-title">88% de acerto: Você é praticamente um aluno de Hogwarts!</h1>
-                            <img src="./images/test.jpg" alt="" class="result-img">
-                            <p class="final-message">
-                                Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="button-container">
-                        <button class="restart-quizz">
-                            Reiniciar quizz
-                        </button>
-                        <button class="back">
-                            Voltar para Home
-                        </button>
-                    </div>
-                </div>
-            </section>
-        </main>
+        <div class="quizz-selected none">
+            
+            
+        </div>
     </section>
     <!--    Libary      -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

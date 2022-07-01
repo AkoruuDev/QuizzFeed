@@ -22,3 +22,8 @@
     cursor: pointer;
     color: var(--hover-text-base);
 }
+
+.your-created-quizzes ion-icon:hover {
+    cursor: pointer;
+    color: var(--hover-red);
+}
