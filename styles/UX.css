@@ -1,4 +1,10 @@
-.createNewQuizz .next:hover {
+/*
+Area conferida padronizada
+30/06/2022
+*/
+
+
+button:hover {
     cursor: pointer;
     background-color: var(--hover-red);
 }
@@ -8,18 +14,13 @@
     background-color: var(--hover-background);
 }
 
-.basicsInfo .content input:hover, .basicsInfo .content input:focus {
+input:hover, input:focus {
     background-color: var(--hover-white);
     color: var(--black);
 }
 
-.restart-quizz:hover{
-    cursor: pointer;
-    background-color: var(--hover-red);
-}
-
 .back:hover{
-    cursor: pointer;
+    background-color: transparent;
     color: var(--hover-text-base);
 }
 
