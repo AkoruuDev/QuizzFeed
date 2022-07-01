@@ -2,6 +2,9 @@
 /*  font-family: 'Roboto', sans-serif;  */
 
 .banker { /*    geral - Feito não mexer   */
+    width: 100%;
+    height: 100%;
+    
     font-family: 'Roboto', sans-serif;
     background-color: var(--background);
 

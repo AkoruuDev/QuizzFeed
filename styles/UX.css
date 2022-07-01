@@ -29,6 +29,7 @@ input:hover, input:focus {
     color: var(--hover-red);
 }
 
-.questionsNewQuizz .closedQuestion ion-icon:hover {
+.questionsNewQuizz .closedQuestion:hover {
     cursor: pointer;
+    background-color: var(--hover-white);
 }

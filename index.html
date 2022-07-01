@@ -118,27 +118,29 @@
                 <div class="basicsInfo">
                     <h2 class="titleNewQuizz">Comece pelo começo</h2>
                     <div class="content">
-                        <input type="text" class="basicsInfo-content" placeholder="Titulo do seu quizz">
-                        <p class="error none">O titulo deve ter entre 20 e 36 caracteres</p>
-                        <input type="text" class="basicsInfo-content" placeholder="URL da imagem do seu quizz">
-                        <p class="error none">Este campo deve estar no formato URL (de link)</p>
-                        <input type="text" class="basicsInfo-content" placeholder="Quantidade de perguntas do quizz">
-                        <p class="error none">No mínimo 3 perguntas</p>
-                        <input type="text" class="basicsInfo-content" placeholder="Quantidade de níveis do quizz">
-                        <p class="error none">no mínimo 2 níveis</p>
+                        <div class="basicsInfo-container">
+                            <input type="text" class="basicsInfo-content" placeholder="Titulo do seu quizz">
+                            <p class="error none">O titulo deve ter entre 20 e 36 caracteres</p>
+                            <input type="text" class="basicsInfo-content" placeholder="URL da imagem do seu quizz">
+                            <p class="error none">Este campo deve estar no formato URL (de link)</p>
+                            <input type="text" class="basicsInfo-content" placeholder="Quantidade de perguntas do quizz">
+                            <p class="error none">No mínimo 3 perguntas</p>
+                            <input type="text" class="basicsInfo-content" placeholder="Quantidade de níveis do quizz">
+                            <p class="error none">no mínimo 2 níveis</p>
+                        </div>
                     </div>
                     <button class="next" onclick="goToCreateQuestions()">Prosseguir para criar perguntas</button>
                 </div>
 
-                <div class="questionsNewQuizz">
+                <div class="questionsNewQuizz none">
                     <h2 class="titleNewQuizz">Crie suas perguntas</h2>
                     <ol class="bas-content">
                         <li class="content Question1">
-                            <div class="closedQuestion">
+                            <div class="closedQuestion" onclick="openQuestionSelected()">
                                 <p class="areaTitle">Pergunta 1</p>
-                                <ion-icon name="create-outline" onclick="openQuestionSelected()"></ion-icon> <!-- Create -->
+                                <ion-icon name="create-outline"></ion-icon> <!-- Create -->
                             </div>
-                            <div class="openQuestion none">
+                            <div class="none">
                                 <p class="areaTitle">Pergunta 1</p>
                                 <input type="text" placeholder="Texto da pergunta">
                                 <input type="text" placeholder="Cor de fundo da pergunta">
@@ -157,36 +159,52 @@
                             </div>
                         </li>
 
-                        <li class="content Question2">
-                            Pergunta 2
-                            <input type="text" placeholder="Texto da pergunta">
-                            <input type="text" placeholder="Cor de fundo da pergunta">
-                            Resposta correta
-                            <input type="text" placeholder="Resposta correta">
-                            <input type="text" placeholder="URL da imagem">
-                            Respostas incorretas
-                            <input type="text" placeholder="Resposta incorreta 1">
-                            <input type="text" placeholder="URL da imagem 1">
-                            <input type="text" placeholder="Resposta incorreta 2">
-                            <input type="text" placeholder="URL da imagem 2">
-                            <input type="text" placeholder="Resposta incorreta 3">
-                            <input type="text" placeholder="URL da imagem 3">
+                        <li class="content Question1">
+                            <div class="closedQuestion" onclick="openQuestionSelected()">
+                                <p class="areaTitle">Pergunta 1</p>
+                                <ion-icon name="create-outline"></ion-icon> <!-- Create -->
+                            </div>
+                            <div class="none">
+                                <p class="areaTitle">Pergunta 1</p>
+                                <input type="text" placeholder="Texto da pergunta">
+                                <input type="text" placeholder="Cor de fundo da pergunta">
+                                <p class="areaTitle">Resposta correta</p>
+                                <input type="text" placeholder="Resposta correta">
+                                <input type="text" placeholder="URL da imagem">
+                                <p class="areaTitle">Respostas incorretas</p>
+                                <input type="text" placeholder="Resposta incorreta 1">
+                                <input type="text" placeholder="URL da imagem 1">
+                                <br>
+                                <input type="text" placeholder="Resposta incorreta 2">
+                                <input type="text" placeholder="URL da imagem 2">
+                                <br>
+                                <input type="text" placeholder="Resposta incorreta 3">
+                                <input type="text" placeholder="URL da imagem 3">
+                            </div>
                         </li>
 
-                        <li class="content Question3">
-                            Pergunta 3
-                            <input type="text" placeholder="Texto da pergunta">
-                            <input type="text" placeholder="Cor de fundo da pergunta">
-                            Resposta correta
-                            <input type="text" placeholder="Resposta correta">
-                            <input type="text" placeholder="URL da imagem">
-                            Respostas incorretas
-                            <input type="text" placeholder="Resposta incorreta 1">
-                            <input type="text" placeholder="URL da imagem 1">
-                            <input type="text" placeholder="Resposta incorreta 2">
-                            <input type="text" placeholder="URL da imagem 2">
-                            <input type="text" placeholder="Resposta incorreta 3">
-                            <input type="text" placeholder="URL da imagem 3">
+                        <li class="content Question1">
+                            <div class="closedQuestion" onclick="openQuestionSelected()">
+                                <p class="areaTitle">Pergunta 1</p>
+                                <ion-icon name="create-outline"></ion-icon> <!-- Create -->
+                            </div>
+                            <div class="none">
+                                <p class="areaTitle">Pergunta 1</p>
+                                <input type="text" placeholder="Texto da pergunta">
+                                <input type="text" placeholder="Cor de fundo da pergunta">
+                                <p class="areaTitle">Resposta correta</p>
+                                <input type="text" placeholder="Resposta correta">
+                                <input type="text" placeholder="URL da imagem">
+                                <p class="areaTitle">Respostas incorretas</p>
+                                <input type="text" placeholder="Resposta incorreta 1">
+                                <input type="text" placeholder="URL da imagem 1">
+                                <br>
+                                <input type="text" placeholder="Resposta incorreta 2">
+                                <input type="text" placeholder="URL da imagem 2">
+                                <br>
+                                <input type="text" placeholder="Resposta incorreta 3">
+                                <input type="text" placeholder="URL da imagem 3">
+                            </div>
                         </li>
                     </ol>
                     <button class="next">Prosseguir para criar níveis</button>

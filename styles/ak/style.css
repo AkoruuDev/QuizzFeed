@@ -55,7 +55,7 @@ input { /* AkoruuDev - Feito não mexer */
     align-items: center;
 }
 
-.bas-content {
+.bas-content, .basicsInfo .content, .questionsNewQuizz .content {
     width: 100%;
 
     display: flex;
@@ -64,7 +64,31 @@ input { /* AkoruuDev - Feito não mexer */
     align-items: center;
 }
 
-.basicsInfo .content, .questionsNewQuizz .content { /* AkoruuDev - Feito não mexer */
+.basicsInfo-container { /* AkoruuDev - Feito não mexer */
+    width: 100%;
+    padding: 25px 20px;
+    margin: 25px 0px;
+
+    background-color: var(--white);
+    box-shadow: 0 4px 10px 4px var(--shaddow);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.questionsNewQuizz .closedQuestion {
+    width: 100%;
+    padding: 15px 20px;
+    margin: 25px 0px;
+
+    background-color: var(--white);
+    box-shadow: 0 4px 10px 4px var(--shaddow);
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.questionsNewQuizz .openQuestion {
     width: 100%;
     padding: 25px 20px;
     margin: 25px 0px;
@@ -77,10 +101,12 @@ input { /* AkoruuDev - Feito não mexer */
 }
 
 .basicsInfo .titleNewQuizz,  .questionsNewQuizz .titleNewQuizz {
-    font-size: 21px;
+    margin-bottom: 30px;
+    font-size: 30px;
     font-weight: 700;
     color: var(--black);
 }
+
 .questionsNewQuizz .content .areaTitle {
     margin: 25px 0px;
     font-size: 18px;
