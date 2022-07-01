@@ -8,6 +8,7 @@ allQuizzesPromise.catch(connectionError);
 
 function getAllQuizzes(response) {
     allQuizzes = response.data;
+    renderizeAllQuizzes(allQuizzes);
     console.log(allQuizzes);
     renderizeAllQuizzes();
 }
@@ -17,9 +18,25 @@ function connectionError(response) {
     window.location.reload();
 }
 
-function renderizeAllQuizzes() {
+function renderizeAllQuizzes(allQuizzes) {
+    console.log(allQuizzes.length)
     const allQuizzesContainer = document.querySelector('.all-quizzes-container');
-    allQuizzesContainer.innerHTML += "";
+    allQuizzesContainer.innerHTML = "";
+    let i = 0;
+
+    while (i < allQuizzes.length) {
+        allQuizzesContainer.innerHTML += `<div class="quizz-boxes" onclick="getOneQuizz(this)">
+        <p class="quizz-id none">${allQuizzes[i].id}</p>
+        <img src="${allQuizzes[i].image}" alt="Image">
+        <div class="gradient"></div>
+        <p class="title">${allQuizzes[i].title}</p>
+        </div>`
+        i++
+    }
+}
+
+function getIdOnClick(element){
+    const ID = element.querySelector().textContent;
 }
 
 function createQuizz() { // Criar novo quizz
@@ -46,9 +63,49 @@ function goToCreateQuestions() { // Ir para criação de questões
 
     let next = checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel);
     if (next) {
+        createQuestionsArea(QuantAsks);
+
         pageOff.classList.add("none");
         pageOn.classList.remove("none");
     }
+}
+
+function createQuestionsArea(QuantAsks) {
+    const print = document.querySelector(".bas-content");
+    print.innerHTML = ""
+
+    for (let i = 1; i <= QuantAsks; i ++) {
+        let messagePrint = `
+            <li class="content Question${i}">
+                <div class="closedQuestion" onclick="openQuestionSelected(this)">
+                    <p class="areaTitle">Pergunta ${i}</p>
+                    <p class="numberQuestion none">${i}</p>
+                    <ion-icon name="create-outline"></ion-icon> <!-- Create -->
+                </div>
+                <div class="none">
+                    <p class="areaTitle">Pergunta ${i}</p>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    Resposta correta
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+                    Respostas incorretas
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="text" placeholder="URL da imagem 1">
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="text" placeholder="URL da imagem 2">
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="text" placeholder="URL da imagem 3">
+                </div>
+            </li>
+        ` 
+
+        print.innerHTML += messagePrint;
+    }
+}
+
+function openQuestionSelected(element) {
+    const pageOff = element.querySelector(".closedQuestion .numberQuestion").textContent;
 }
 
 function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // Tratamento de erros para criação de novo quizz - Informações básicas
@@ -117,25 +174,19 @@ function checkErroInfoBasics(pos) { // Tratamento de erros para criação de nov
     }
 }
 
-// let oneQuizzPromise = axios.get(`${APIprefix}quizzes/`);
-// oneQuizzPromise.then(getOneQuizz);
-// oneQuizzPromise.catch(connectionError);
-
 function getOneQuizz(element) { // Começar quizz
     //create class for one quizz
     //change inner.html
-    console.log(element);
+    let id = element.querySelector('.quizz-id').textContent;
+    console.log(id);
     let allPage = document.querySelector('.quizzes');
     let quizzSelected = document.querySelector('.quizz-selected')
-    console.log(quizzSelected);
     allPage.classList.add("none");
     quizzSelected.classList.remove('none');
-    
     quizzSelected.innerHTML += `<div class="quizz-banner">
     <img src="./images/test.jpg" alt="">
     <p class="quizz-question">O quão potterhead é voce?</p>
-</div>`
-
+    </div>`
     //esse número 4 corresponde a quantidade de perguntas requisitadas
     for (let i = 0; i < 4; i++) {
         quizzSelected.innerHTML += `<section class="selected-content">
