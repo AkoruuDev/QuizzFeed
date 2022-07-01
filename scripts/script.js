@@ -136,102 +136,43 @@ function getOneQuizz() { // Começar quizz
     quizzSelected.innerHTML += `<div class="quizz-banner">
     <img src="./images/test.jpg" alt="">
     <p class="quizz-question">O quão potterhead é voce?</p>
-</div>
-<section class="selected-content">
-                <div class="quizz-selected-container">
-                    <div class="question-container">
-                        <div class="question-container-title">
-                            <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
-                        </div>
-                        <div class="question-img-container">
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                        </div>
+</div>`
+
+    //esse número 4 corresponde a quantidade de perguntas requisitadas
+    for (let i = 0; i < 4; i++) {
+        quizzSelected.innerHTML += `<section class="selected-content">
+        <div class="quizz-selected-container">
+            <div class="question-container">
+                <div class="question-container-title">
+                    <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
+                </div>
+                <div class="question-img-container">
+                    <div>
+                        <img src="./images/test.jpg" alt="" class="question-img">
+                        <p class="answer">teste</p>
                     </div>
-                    <div class="question-container">
-                        <div class="question-container-title">
-                            <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
-                        </div>
-                        <div class="question-img-container">
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                        </div>
+                    <div>
+                        <img src="./images/test.jpg" alt="" class="question-img">
+                        <p class="answer">teste</p>
                     </div>
-                    <div class="question-container">
-                        <div class="question-container-title">
-                            <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
-                        </div>
-                        <div class="question-img-container">
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                        </div>
+                    <div>
+                        <img src="./images/test.jpg" alt="" class="question-img">
+                        <p class="answer">teste</p>
                     </div>
-                    <div class="question-container">
-                        <div class="question-container-title">
-                            <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
-                        </div>
-                        <div class="question-img-container">
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                        </div>
+                    <div>
+                        <img src="./images/test.jpg" alt="" class="question-img">
+                        <p class="answer">teste</p>
                     </div>
-                    <div class="result">
+                </div>
+            </div>
+        </div>
+    </section>`    
+    }
+
+
+    quizzSelected.innerHTML += `<section class="selected-content">
+    <div class="quizz-selected-container">
+    <div class="result">
                         <div>
                             <h1 class="result-title">88% de acerto: Você é praticamente um aluno de Hogwarts!</h1>
                             <img src="./images/test.jpg" alt="" class="result-img">
