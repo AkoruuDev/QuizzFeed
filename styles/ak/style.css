@@ -149,3 +149,7 @@ input { /* AkoruuDev - Feito não mexer */
     align-items: center;
 }
 
+.none { /*  geral - Feito não mexer */
+    display: none;
+}
+
