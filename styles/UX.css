@@ -27,3 +27,7 @@
     cursor: pointer;
     color: var(--hover-red);
 }
+
+.questionsNewQuizz .closedQuestion ion-icon:hover {
+    cursor: pointer;
+}
