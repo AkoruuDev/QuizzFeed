@@ -66,8 +66,9 @@ function createQuestionsArea(QuantAsks) {
     for (let i = 1; i <= QuantAsks; i ++) {
         let messagePrint = `
             <li class="content Question${i}">
-                <div class="closedQuestion" onclick="openQuestionSelected()">
+                <div class="closedQuestion" onclick="openQuestionSelected(this)">
                     <p class="areaTitle">Pergunta ${i}</p>
+                    <p class="numberQuestion none">${i}</p>
                     <ion-icon name="create-outline"></ion-icon> <!-- Create -->
                 </div>
                 <div class="none">
@@ -91,6 +92,11 @@ function createQuestionsArea(QuantAsks) {
         print.innerHTML += messagePrint;
     }
 }
+
+function openQuestionSelected(element) {
+    const pageOff = element.querySelector(".closedQuestion .numberQuestion").textContent;
+}
+
 function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // Tratamento de erros para criação de novo quizz - Informações básicas
     let retTitle = false;
     let retURLnq = false;
