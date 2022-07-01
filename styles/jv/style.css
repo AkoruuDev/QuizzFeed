@@ -23,7 +23,7 @@
 }
 
 .quizz-banner img {
-    width: 100%;
+    width: 100vw;
     height: 227px;
     object-fit: cover;
     filter: brightness(95%) opacity(60%);

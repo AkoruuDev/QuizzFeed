@@ -6,10 +6,10 @@ let allQuizzesPromise = axios.get(`${APIprefix}quizzes`);
 allQuizzesPromise.then(getAllQuizzes);
 allQuizzesPromise.catch(connectionError);
 
-
 function getAllQuizzes(response) {
     allQuizzes = response.data;
     console.log(allQuizzes);
+    renderizeAllQuizzes();
 }
 
 function connectionError(response) {
@@ -18,14 +18,8 @@ function connectionError(response) {
 }
 
 function renderizeAllQuizzes() {
-    const allQuizzesContainer = document.querySelectorAll('.all-quizzes-container');
-    for (let i = 0; i < allQuizzes.length; i++) {
-        allQuizzesContainer.innerHTML += `<div class="quizz-boxes" onclick="getOneQuizz(this)">
-        <img src="${allQuizzes[i].image}" alt="Image">
-        <div class="gradient"></div>
-        <p class="title">${allQuizzes[i].title}</p>
-    </div>`
-    }
+    const allQuizzesContainer = document.querySelector('.all-quizzes-container');
+    allQuizzesContainer.innerHTML += "";
 }
 
 function createQuizz() { // Criar novo quizz
@@ -123,16 +117,20 @@ function checkErroInfoBasics(pos) { // Tratamento de erros para criação de nov
     }
 }
 
-let oneQuizzPromise = axios.get(`${APIprefix}quizzes/${quizzID}`);
-oneQuizzPromise.then(getOneQuizz);
-oneQuizzPromise.catch(connectionError);
+// let oneQuizzPromise = axios.get(`${APIprefix}quizzes/`);
+// oneQuizzPromise.then(getOneQuizz);
+// oneQuizzPromise.catch(connectionError);
 
-function getOneQuizz() { // Começar quizz
+function getOneQuizz(element) { // Começar quizz
     //create class for one quizz
     //change inner.html
+    console.log(element);
     let allPage = document.querySelector('.quizzes');
-    let quizzSelected = document.querySelector('.quizz-selected');
+    let quizzSelected = document.querySelector('.quizz-selected')
+    console.log(quizzSelected);
     allPage.classList.add("none");
+    quizzSelected.classList.remove('none');
+    
     quizzSelected.innerHTML += `<div class="quizz-banner">
     <img src="./images/test.jpg" alt="">
     <p class="quizz-question">O quão potterhead é voce?</p>
@@ -204,9 +202,6 @@ function getQuizzID() {
 function renderizeSelectedQuizz() {
 
 }
-
-
-renderizeAllQuizzes();
 
 
 
