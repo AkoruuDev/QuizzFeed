@@ -9,6 +9,7 @@ allQuizzesPromise.catch(connectionError);
 
 function getAllQuizzes(response) {
     allQuizzes = response.data;
+    renderizeAllQuizzes(allQuizzes);
     console.log(allQuizzes);
 }
 
@@ -17,14 +18,20 @@ function connectionError(response) {
     window.location.reload();
 }
 
-function renderizeAllQuizzes() {
-    const allQuizzesContainer = document.querySelectorAll('.all-quizzes-container');
-    for (let i = 0; i < allQuizzes.length; i++) {
+function renderizeAllQuizzes(allQuizzes) {
+    console.log(allQuizzes.length)
+    const allQuizzesContainer = document.querySelector('.all-quizzes-container');
+    allQuizzesContainer.innerHTML = "";
+    let i = 0;
+
+    while (i < allQuizzes.length) {
         allQuizzesContainer.innerHTML += `<div class="quizz-boxes" onclick="getOneQuizz(this)">
         <img src="${allQuizzes[i].image}" alt="Image">
         <div class="gradient"></div>
         <p class="title">${allQuizzes[i].title}</p>
-    </div>`
+        </div>`
+        console.log(allQuizzesContainer);
+        i++
     }
 }
 
