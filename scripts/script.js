@@ -102,7 +102,24 @@ function createQuestionsArea(QuantAsks) {
 }
 
 function openQuestionSelected(element) {
-    const pageOff = element.querySelector(".closedQuestion .numberQuestion").textContent;
+    const numberQuestion = element.querySelector(".closedQuestion .numberQuestion").textContent;
+    const turnOff = `Question${numberQuestion}`;
+
+    const pageOn = document.querySelector(`.${turnOff} > .none`)
+    console.log(pageOn)
+    const pageOff = document.querySelector(`.${turnOff} .closedQuestion`)
+    console.log(pageOff)
+
+    pageOn.classList.add("openQuestion")
+    console.log(pageOn)
+    pageOn.classList.remove("none")
+    console.log(pageOn)
+
+    pageOff.classList.remove("closedQuestion")
+    console.log(pageOff)
+    pageOff.classList.add("none")
+    console.log(pageOff)
+    console.log("Será que foi?")
 }
 
 function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // Tratamento de erros para criação de novo quizz - Informações básicas

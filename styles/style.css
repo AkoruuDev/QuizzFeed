@@ -111,6 +111,10 @@ button { /* geral - Feito não mexer  */
     outline: none;
 }
 
+.all-quizzes-title, .quizzes .title-your-created-quizzes{
+    padding: 0px 8%;
+}
+
 .none { /*  geral - Feito não mexer */
     display: none;
 }
