@@ -73,14 +73,12 @@ function createQuestionsArea(QuantAsks) {
 
     for (let i = 1; i <= QuantAsks; i ++) {
         let messagePrint = `
-            <li class="content Question${i}">
-                <div class="closedQuestion" onclick="openQuestionSelected(this)">
+            <li class="content closedFolder Question${i}" onclick="openQuestionSelected(this)">              
+                <span class="closedQuestion">
                     <p class="areaTitle">Pergunta ${i}</p>
-                    <p class="numberQuestion none">${i}</p>
                     <ion-icon name="create-outline"></ion-icon> <!-- Create -->
-                </div>
-                <div class="none">
-                    <p class="areaTitle">Pergunta ${i}</p>
+                </span>
+                <div class="questions none">
                     <input type="text" placeholder="Texto da pergunta">
                     <input type="text" placeholder="Cor de fundo da pergunta">
                     Resposta correta
@@ -93,33 +91,29 @@ function createQuestionsArea(QuantAsks) {
                     <input type="text" placeholder="URL da imagem 2">
                     <input type="text" placeholder="Resposta incorreta 3">
                     <input type="text" placeholder="URL da imagem 3">
-                </div>
+                </div>                           
             </li>
-        ` 
+        `
 
         print.innerHTML += messagePrint;
     }
 }
 
 function openQuestionSelected(element) {
-    const numberQuestion = element.querySelector(".closedQuestion .numberQuestion").textContent;
-    const turnOff = `Question${numberQuestion}`;
+    checkOthersCheckboxQuestions();
+    element.querySelector(".closedQuestion ion-icon").classList.add("none");
+    element.querySelector(".questions").classList.remove("none");
+    element.classList.remove("closedFolder");
+}
 
-    const pageOn = document.querySelector(`.${turnOff} > .none`)
-    console.log(pageOn)
-    const pageOff = document.querySelector(`.${turnOff} .closedQuestion`)
-    console.log(pageOff)
+function checkOthersCheckboxQuestions() {
+    const qtd = document.querySelectorAll(".bas-content li").length;
 
-    pageOn.classList.add("openQuestion")
-    console.log(pageOn)
-    pageOn.classList.remove("none")
-    console.log(pageOn)
-
-    pageOff.classList.remove("closedQuestion")
-    console.log(pageOff)
-    pageOff.classList.add("none")
-    console.log(pageOff)
-    console.log("Será que foi?")
+    for (let i = 1; i <= qtd; i ++) {
+        document.querySelector(`.Question${i} .closedQuestion ion-icon`).classList.remove("none");
+        document.querySelector(`.Question${i} .questions`).classList.add("none");
+        document.querySelector(`.Question${i}`).classList.add("closedFolder");
+    }
 }
 
 function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // Tratamento de erros para criação de novo quizz - Informações básicas
