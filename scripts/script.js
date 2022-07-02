@@ -10,7 +10,6 @@ allQuizzesPromise.catch(connectionError);
 function getAllQuizzes(response) {
     allQuizzes = response.data;
     renderizeAllQuizzes(allQuizzes);
-    console.log(allQuizzes);
 }
 
 function connectionError(response) {
@@ -19,7 +18,6 @@ function connectionError(response) {
 }
 
 function renderizeAllQuizzes(allQuizzes) {
-    console.log(allQuizzes.length)
     const allQuizzesContainer = document.querySelector('.all-quizzes-container');
     allQuizzesContainer.innerHTML = "";
     let i = 0;
@@ -30,7 +28,6 @@ function renderizeAllQuizzes(allQuizzes) {
         <div class="gradient"></div>
         <p class="title">${allQuizzes[i].title}</p>
         </div>`
-        console.log(allQuizzesContainer);
         i++
     }
 }
@@ -170,9 +167,9 @@ function checkErroInfoBasics(pos) { // Tratamento de erros para criação de nov
     }
 }
 
-let oneQuizzPromise = axios.get(`${APIprefix}quizzes/${quizzID}`);
-oneQuizzPromise.then(getOneQuizz);
-oneQuizzPromise.catch(connectionError);
+// let oneQuizzPromise = axios.get(`${APIprefix}quizzes/${quizzID}`);
+// oneQuizzPromise.then(getOneQuizz);
+// oneQuizzPromise.catch(connectionError);
 
 function getOneQuizz() { // Começar quizz
     //create class for one quizz
