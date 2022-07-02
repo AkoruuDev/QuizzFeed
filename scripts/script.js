@@ -6,7 +6,6 @@ let allQuizzesPromise = axios.get(`${APIprefix}quizzes`);
 allQuizzesPromise.then(getAllQuizzes);
 allQuizzesPromise.catch(connectionError);
 
-
 function getAllQuizzes(response) {
     allQuizzes = response.data;
     renderizeAllQuizzes(allQuizzes);
@@ -24,12 +23,17 @@ function renderizeAllQuizzes(allQuizzes) {
 
     while (i < allQuizzes.length) {
         allQuizzesContainer.innerHTML += `<div class="quizz-boxes" onclick="getOneQuizz(this)">
+        <p class="quizz-id none">${allQuizzes[i].id}</p>
         <img src="${allQuizzes[i].image}" alt="Image">
         <div class="gradient"></div>
         <p class="title">${allQuizzes[i].title}</p>
         </div>`
         i++
     }
+}
+
+function getIdOnClick(element){
+    const ID = element.querySelector().textContent;
 }
 
 function createQuizz() { // Criar novo quizz
@@ -167,21 +171,19 @@ function checkErroInfoBasics(pos) { // Tratamento de erros para criação de nov
     }
 }
 
-// let oneQuizzPromise = axios.get(`${APIprefix}quizzes/${quizzID}`);
-// oneQuizzPromise.then(getOneQuizz);
-// oneQuizzPromise.catch(connectionError);
-
-function getOneQuizz() { // Começar quizz
+function getOneQuizz(element) { // Começar quizz
     //create class for one quizz
     //change inner.html
+    let id = element.querySelector('.quizz-id').textContent;
+    console.log(id);
     let allPage = document.querySelector('.quizzes');
-    let quizzSelected = document.querySelector('.quizz-selected');
+    let quizzSelected = document.querySelector('.quizz-selected')
     allPage.classList.add("none");
+    quizzSelected.classList.remove('none');
     quizzSelected.innerHTML += `<div class="quizz-banner">
     <img src="./images/test.jpg" alt="">
     <p class="quizz-question">O quão potterhead é voce?</p>
     </div>`
-
     //esse número 4 corresponde a quantidade de perguntas requisitadas
     for (let i = 0; i < 4; i++) {
         quizzSelected.innerHTML += `<section class="selected-content">
@@ -248,9 +250,6 @@ function getQuizzID() {
 function renderizeSelectedQuizz() {
 
 }
-
-
-renderizeAllQuizzes();
 
 
 
