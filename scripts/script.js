@@ -9,8 +9,6 @@ allQuizzesPromise.catch(connectionError);
 function getAllQuizzes(response) {
     allQuizzes = response.data;
     renderizeAllQuizzes(allQuizzes);
-    console.log(allQuizzes);
-    renderizeAllQuizzes();
 }
 
 function connectionError(response) {
@@ -19,7 +17,6 @@ function connectionError(response) {
 }
 
 function renderizeAllQuizzes(allQuizzes) {
-    console.log(allQuizzes.length)
     const allQuizzesContainer = document.querySelector('.all-quizzes-container');
     allQuizzesContainer.innerHTML = "";
     let i = 0;
