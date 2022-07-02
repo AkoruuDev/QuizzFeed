@@ -178,13 +178,14 @@ function getOneQuizz(element) { // Começar quizz
     //create class for one quizz
     //change inner.html
     let id = element.querySelector('.quizz-id').textContent;
-    console.log(id);
+    let position = getPosition(id);
+    console.log(position);
     let allPage = document.querySelector('.quizzes');
     let quizzSelected = document.querySelector('.quizz-selected')
     allPage.classList.add("none");
     quizzSelected.classList.remove('none');
     quizzSelected.innerHTML += `<div class="quizz-banner">
-    <img src="./images/test.jpg" alt="">
+    <img src="${allQuizzes[position].image}" alt="">
     <p class="quizz-question">O quão potterhead é voce?</p>
     </div>`
     //esse número 4 corresponde a quantidade de perguntas requisitadas
@@ -193,7 +194,7 @@ function getOneQuizz(element) { // Começar quizz
         <div class="quizz-selected-container">
             <div class="question-container">
                 <div class="question-container-title">
-                    <p>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</p>
+                    <p>${allQuizzes[position].title}</p>
                 </div>
                 <div class="question-img-container">
                     <div>
@@ -205,11 +206,11 @@ function getOneQuizz(element) { // Começar quizz
                         <p class="answer">teste</p>
                     </div>
                     <div>
-                        <img src="./images/test.jpg" alt="" class="question-img">
+                        <img src="${allQuizzes[position].image}" alt="" class="question-img">
                         <p class="answer">teste</p>
                     </div>
                     <div>
-                        <img src="./images/test.jpg" alt="" class="question-img">
+                        <img src="${allQuizzes[position].image}" alt="" class="question-img">
                         <p class="answer">teste</p>
                     </div>
                 </div>
@@ -243,6 +244,15 @@ function getOneQuizz(element) { // Começar quizz
             </section>`;
 }
 
+function getPosition(id){
+    let idPosition = 0;
+    for(let i=0;i<allQuizzes.length;i++){
+        if(id==allQuizzes[i].id){
+            idPosition += i;
+        }
+    }
+    return idPosition;
+}
 
 
 
