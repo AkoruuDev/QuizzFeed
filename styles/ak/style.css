@@ -145,6 +145,14 @@ input { /* AkoruuDev - Feito não mexer */
     justify-content: center;
 }
 
+.creatingNewQuestions {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .bas-content .content {
     width: 100%;
     height: auto;

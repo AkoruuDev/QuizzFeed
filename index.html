@@ -38,6 +38,7 @@
                         Seus Quizzes
                         <ion-icon name="add-circle" onclick="createQuizz()"></ion-icon> <!-- Add -->
                     </div>
+                    <!--
                     <div class="myCreatedQuizzes">
                         <div class="quizz-boxes" onclick="getOneQuizz(this)">
                             <img src="images/test.jpg" alt="Image">
@@ -45,6 +46,7 @@
                             <p class="title">O quanto você é de boas?</p>
                         </div>
                     </div>
+                    -->
                 </div>
             </div>
             <div class="all-quizzes">
@@ -75,76 +77,14 @@
                     <button class="next" onclick="goToCreateQuestions()">Prosseguir para criar perguntas</button>
                 </div>
 
-                <div class="questionsNewQuizz">
-                    <h2 class="titleNewQuizz">Crie suas perguntas</h2>
-                    <ol class="bas-content">
-                        <li class="content closedFolder Question1" onclick="openQuestionSelected(this)"> 
-                            <p class="numberQuestion none">1</p>                           
-                            <span class="closedQuestion">
-                                <p class="areaTitle">Pergunta 1</p>
-                                <ion-icon name="create-outline"></ion-icon> <!-- Create -->
-                            </span>
-                            <div class="questions none">
-                                <input type="text" placeholder="Texto da pergunta">
-                                <input type="text" placeholder="Cor de fundo da pergunta">
-                                Resposta correta
-                                <input type="text" placeholder="Resposta correta">
-                                <input type="text" placeholder="URL da imagem">
-                                Respostas incorretas
-                                <input type="text" placeholder="Resposta incorreta 1">
-                                <input type="text" placeholder="URL da imagem 1">
-                                <input type="text" placeholder="Resposta incorreta 2">
-                                <input type="text" placeholder="URL da imagem 2">
-                                <input type="text" placeholder="Resposta incorreta 3">
-                                <input type="text" placeholder="URL da imagem 3">
-                            </div>                           
-                        </li>
-
-                        <li class="content closedFolder Question2" onclick="openQuestionSelected(this)"> 
-                            <p class="numberQuestion none">2</p>                           
-                            <span class="closedQuestion">
-                                <p class="areaTitle">Pergunta 2</p>
-                                <ion-icon name="create-outline"></ion-icon> <!-- Create -->
-                            </span>
-                            <div class="questions none">
-                                <input type="text" placeholder="Texto da pergunta">
-                                <input type="text" placeholder="Cor de fundo da pergunta">
-                                Resposta correta
-                                <input type="text" placeholder="Resposta correta">
-                                <input type="text" placeholder="URL da imagem">
-                                Respostas incorretas
-                                <input type="text" placeholder="Resposta incorreta 1">
-                                <input type="text" placeholder="URL da imagem 1">
-                                <input type="text" placeholder="Resposta incorreta 2">
-                                <input type="text" placeholder="URL da imagem 2">
-                                <input type="text" placeholder="Resposta incorreta 3">
-                                <input type="text" placeholder="URL da imagem 3">
-                            </div>                           
-                        </li>
-
-                        <li class="content closedFolder Question3" onclick="openQuestionSelected(this)"> 
-                            <p class="numberQuestion none">3</p>                           
-                            <span class="closedQuestion">
-                                <p class="areaTitle">Pergunta 3</p>
-                                <ion-icon name="create-outline"></ion-icon> <!-- Create -->
-                            </span>
-                            <div class="questions none">
-                                <input type="text" placeholder="Texto da pergunta">
-                                <input type="text" placeholder="Cor de fundo da pergunta">
-                                Resposta correta
-                                <input type="text" placeholder="Resposta correta">
-                                <input type="text" placeholder="URL da imagem">
-                                Respostas incorretas
-                                <input type="text" placeholder="Resposta incorreta 1">
-                                <input type="text" placeholder="URL da imagem 1">
-                                <input type="text" placeholder="Resposta incorreta 2">
-                                <input type="text" placeholder="URL da imagem 2">
-                                <input type="text" placeholder="Resposta incorreta 3">
-                                <input type="text" placeholder="URL da imagem 3">
-                            </div>                           
-                        </li>
-                    </ol>
-                    <button class="next">Prosseguir para criar níveis</button>
+                <div class="questionsNewQuizz none">
+                    <div class="creatingNewQuestions">
+                        <h2 class="titleNewQuizz">Crie suas perguntas</h2>
+                        <ol class="bas-content">
+                        
+                        </ol>
+                        <button class="next">Prosseguir para criar níveis</button>
+                    </div>
                 </div>
             </div>
         </main>

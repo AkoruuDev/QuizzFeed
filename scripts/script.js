@@ -32,10 +32,6 @@ function renderizeAllQuizzes(allQuizzes) {
     }
 }
 
-function getIdOnClick(element){
-    const ID = element.querySelector().textContent;
-}
-
 function createQuizz() { // Criar novo quizz
     let pageOff = document.querySelector(".quizzes");
     let pageOn = document.querySelector(".newQuizz");
