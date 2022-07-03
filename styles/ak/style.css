@@ -7,9 +7,8 @@
     font-style: italic;
 }
 
-input { /* AkoruuDev - Feito não mexer */
+input, textarea { /* AkoruuDev - Feito não mexer */
     width: 100%;
-    height: 45px;
     margin: 10px 0px;
     padding: 18px;
 
@@ -20,6 +19,14 @@ input { /* AkoruuDev - Feito não mexer */
     border: solid var(--text-base) 1px;
     border-radius: 5px;
     outline: none;
+}
+
+input {
+    height: 45px;
+}
+
+.textarea {
+    height: 200px;
 }
 
 .your-created-quizzes .title-your-created-quizzes { /* AkoruuDev - Feito não mexer   */
@@ -145,7 +152,7 @@ input { /* AkoruuDev - Feito não mexer */
     justify-content: center;
 }
 
-.creatingNewQuestions {
+.creatingNewQuestions, .creatingLevels {
     width: 100%;
 
     display: flex;
@@ -176,7 +183,7 @@ input { /* AkoruuDev - Feito não mexer */
     transform: all 1s linear;
 }
 
-.bas-content .closedQuestion {
+.bas-content .closedQuestion, .bas-content .closedLevel {
     width: 100%;
     display: flex;
     justify-content: space-between;
