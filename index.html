@@ -34,11 +34,19 @@
                     </div>
                 </div>
                 <div class="your-created-quizzes none">
-                    <div class="title">
+                    <div class="title-your-created-quizzes">
                         Seus Quizzes
                         <ion-icon name="add-circle" onclick="createQuizz()"></ion-icon> <!-- Add -->
                     </div>
-                    
+                    <!--
+                    <div class="myCreatedQuizzes">
+                        <div class="quizz-boxes" onclick="getOneQuizz(this)">
+                            <img src="images/test.jpg" alt="Image">
+                            <div class="gradient"></div>
+                            <p class="title">O quanto você é de boas?</p>
+                        </div>
+                    </div>
+                    -->
                 </div>
             </div>
             <div class="all-quizzes">
@@ -70,79 +78,13 @@
                 </div>
 
                 <div class="questionsNewQuizz none">
-                    <h2 class="titleNewQuizz">Crie suas perguntas</h2>
-                    <ol class="bas-content">
-                        <li class="content Question1">
-                            <div class="closedQuestion" onclick="openQuestionSelected()">
-                                <p class="areaTitle">Pergunta 1</p>
-                                <ion-icon name="create-outline"></ion-icon> <!-- Create -->
-                            </div>
-                            <div class="none">
-                                <p class="areaTitle">Pergunta 1</p>
-                                <input type="text" placeholder="Texto da pergunta">
-                                <input type="text" placeholder="Cor de fundo da pergunta">
-                                Resposta correta
-                                <input type="text" placeholder="Resposta correta">
-                                <input type="text" placeholder="URL da imagem">
-                                Respostas incorretas
-                                <input type="text" placeholder="Resposta incorreta 1">
-                                <input type="text" placeholder="URL da imagem 1">
-                                <input type="text" placeholder="Resposta incorreta 2">
-                                <input type="text" placeholder="URL da imagem 2">
-                                <input type="text" placeholder="Resposta incorreta 3">
-                                <input type="text" placeholder="URL da imagem 3">
-                            </div>
-                        </li>
-
-                        <li class="content Question1">
-                            <div class="closedQuestion" onclick="openQuestionSelected()">
-                                <p class="areaTitle">Pergunta 1</p>
-                                <ion-icon name="create-outline"></ion-icon> <!-- Create -->
-                            </div>
-                            <div class="none">
-                                <p class="areaTitle">Pergunta 1</p>
-                                <input type="text" placeholder="Texto da pergunta">
-                                <input type="text" placeholder="Cor de fundo da pergunta">
-                                <p class="areaTitle">Resposta correta</p>
-                                <input type="text" placeholder="Resposta correta">
-                                <input type="text" placeholder="URL da imagem">
-                                <p class="areaTitle">Respostas incorretas</p>
-                                <input type="text" placeholder="Resposta incorreta 1">
-                                <input type="text" placeholder="URL da imagem 1">
-                                <br>
-                                <input type="text" placeholder="Resposta incorreta 2">
-                                <input type="text" placeholder="URL da imagem 2">
-                                <br>
-                                <input type="text" placeholder="Resposta incorreta 3">
-                                <input type="text" placeholder="URL da imagem 3">
-                            </div>
-                        </li>
-
-                        <li class="content Question1">
-                            <div class="closedQuestion" onclick="openQuestionSelected()">
-                                <p class="areaTitle">Pergunta 1</p>
-                                <ion-icon name="create-outline"></ion-icon> <!-- Create -->
-                            </div>
-                            <div class="none">
-                                <p class="areaTitle">Pergunta 1</p>
-                                <input type="text" placeholder="Texto da pergunta">
-                                <input type="text" placeholder="Cor de fundo da pergunta">
-                                <p class="areaTitle">Resposta correta</p>
-                                <input type="text" placeholder="Resposta correta">
-                                <input type="text" placeholder="URL da imagem">
-                                <p class="areaTitle">Respostas incorretas</p>
-                                <input type="text" placeholder="Resposta incorreta 1">
-                                <input type="text" placeholder="URL da imagem 1">
-                                <br>
-                                <input type="text" placeholder="Resposta incorreta 2">
-                                <input type="text" placeholder="URL da imagem 2">
-                                <br>
-                                <input type="text" placeholder="Resposta incorreta 3">
-                                <input type="text" placeholder="URL da imagem 3">
-                            </div>
-                        </li>
-                    </ol>
-                    <button class="next">Prosseguir para criar níveis</button>
+                    <div class="creatingNewQuestions">
+                        <h2 class="titleNewQuizz">Crie suas perguntas</h2>
+                        <ol class="bas-content">
+                        
+                        </ol>
+                        <button class="next">Prosseguir para criar níveis</button>
+                    </div>
                 </div>
             </div>
         </main>

@@ -74,14 +74,12 @@ function createQuestionsArea(QuantAsks) {
 
     for (let i = 1; i <= QuantAsks; i++) {
         let messagePrint = `
-            <li class="content Question${i}">
-                <div class="closedQuestion" onclick="openQuestionSelected(this)">
+            <li class="content closedFolder Question${i}" onclick="openQuestionSelected(this)">              
+                <span class="closedQuestion">
                     <p class="areaTitle">Pergunta ${i}</p>
-                    <p class="numberQuestion none">${i}</p>
                     <ion-icon name="create-outline"></ion-icon> <!-- Create -->
-                </div>
-                <div class="none">
-                    <p class="areaTitle">Pergunta ${i}</p>
+                </span>
+                <div class="questions none">
                     <input type="text" placeholder="Texto da pergunta">
                     <input type="text" placeholder="Cor de fundo da pergunta">
                     Resposta correta
@@ -94,7 +92,7 @@ function createQuestionsArea(QuantAsks) {
                     <input type="text" placeholder="URL da imagem 2">
                     <input type="text" placeholder="Resposta incorreta 3">
                     <input type="text" placeholder="URL da imagem 3">
-                </div>
+                </div>                           
             </li>
         `
 
@@ -103,7 +101,20 @@ function createQuestionsArea(QuantAsks) {
 }
 
 function openQuestionSelected(element) {
-    const pageOff = element.querySelector(".closedQuestion .numberQuestion").textContent;
+    checkOthersCheckboxQuestions();
+    element.querySelector(".closedQuestion ion-icon").classList.add("none");
+    element.querySelector(".questions").classList.remove("none");
+    element.classList.remove("closedFolder");
+}
+
+function checkOthersCheckboxQuestions() {
+    const qtd = document.querySelectorAll(".bas-content li").length;
+
+    for (let i = 1; i <= qtd; i++) {
+        document.querySelector(`.Question${i} .closedQuestion ion-icon`).classList.remove("none");
+        document.querySelector(`.Question${i} .questions`).classList.add("none");
+        document.querySelector(`.Question${i}`).classList.add("closedFolder");
+    }
 }
 
 function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // Tratamento de erros para criação de novo quizz - Informações básicas
@@ -185,16 +196,12 @@ function getOneQuizz(element) { // Começar quizz
     let questionsArray = allQuizzes[position].questions;
     let levelsArray = allQuizzes[position].levels;
     let answersArray = [];
-    let answersOptionArray = [];
-
+    let answersOptionArray;
     for (let i = 0; i < questionsArray.length; i++) {
         answersArray[i] = questionsArray[i].answers;
     }
-    let count = 0;
-    for (let i = 0; i < answersArray.length; i++){
-        answersOptionArray[i] = answersArray[i][count];
-        count++;  
-    }
+
+
     count = 0;
     console.log(levelsArray);
     console.log(questionsArray);
@@ -210,32 +217,31 @@ function getOneQuizz(element) { // Começar quizz
     `
     for (let i = 0; i < questionsArray.length; i++) {
         quizzSelected.innerHTML += `<section class="selected-content">
-        <div class="quizz-selected-container">
-            <div class="question-container">
-                <div class="question-container-title">
-                    <p>${questionsArray[i].title}</p>
-                </div>
-                <div class="question-img-container">
-                    <div>
-                        <img src="${questionsArray[i].image}" alt="" class="question-img">
-                        <p class="answer">${questionsArray[i].title}</p>
-                    </div>
-                    <div>
-                        <img src="./images/test.jpg" alt="" class="question-img">
-                        <p class="answer">teste</p>
-                    </div>
-                    <div>
-                        <img src="${answersArray[i].image}" alt="" class="question-img">
-                        <p class="answer">teste</p>
-                    </div>
-                    <div>
-                        <img src="${allQuizzes[position].image}" alt="" class="question-img">
-                        <p class="answer">teste</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>`    
+                <div class="quizz-selected-container">
+                    <div class="question-container">
+                        <div class="question-container-title">
+                            <p>${questionsArray[i].title}</p>
+                        </div>
+                        <div class="question-img-container">
+                            <div>
+                                <img src="./images/test.jpg" alt="" class="question-img">
+                                <p class="answer">teste</p>
+                            </div>
+                            <div>
+                                <img src="./images/test.jpg" alt="" class="question-img">
+                                <p class="answer">teste</p>
+                            </div>
+                            <div>
+                                <img src="./images/test.jpg" alt="" class="question-img">
+                                <p class="answer">teste</p>
+                            </div>
+                            <div>
+                                <img src="./images/test.jpg" alt="" class="question-img">
+                                <p class="answer">teste</p>
+                            </div>
+                        </div>
+                    </div>`
+
     }
 
     quizzSelected.innerHTML += `<section class="selected-content">

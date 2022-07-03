@@ -29,9 +29,14 @@ input:hover, input:focus {
     color: var(--hover-red);
 }
 
-.questionsNewQuizz .closedQuestion:hover {
+.bas-content .content:hover {
     cursor: pointer;
-    background-color: var(--hover-white);
+    /* background-color: var(--hover-white); */
+}
+
+.bas-content .content:focus {
+    cursor: auto;
+    background-color: var(--white);
 }
 
 .quizz-boxes .gradient:hover {
