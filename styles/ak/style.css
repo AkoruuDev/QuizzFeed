@@ -152,7 +152,7 @@ input {
     justify-content: center;
 }
 
-.creatingNewQuestions, .creatingLevels {
+.creatingNewQuestions, .creatingLevels, .createdNewQuizz {
     width: 100%;
 
     display: flex;

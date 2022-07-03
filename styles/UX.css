@@ -19,7 +19,7 @@ input:hover, input:focus, textarea:hover, textarea:focus {
     color: var(--black);
 }
 
-.back:hover{
+.back-home:hover{
     background-color: transparent;
     color: var(--hover-text-base);
 }
