@@ -85,10 +85,12 @@
 
 .question-img-container img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .answer {
-    padding-top: 9px;
+   padding-bottom: 10px;
     font-weight: 700;
     font-size: 20px;
 }

@@ -16,6 +16,7 @@ function connectionError(response) {
     window.location.reload();
 }
 
+
 function renderizeAllQuizzes(allQuizzes) {
     const allQuizzesContainer = document.querySelector('.all-quizzes-container');
     allQuizzesContainer.innerHTML = "";
@@ -32,7 +33,7 @@ function renderizeAllQuizzes(allQuizzes) {
     }
 }
 
-function getIdOnClick(element){
+function getIdOnClick(element) {
     const ID = element.querySelector().textContent;
 }
 
@@ -71,7 +72,7 @@ function createQuestionsArea(QuantAsks) {
     const print = document.querySelector(".bas-content");
     print.innerHTML = ""
 
-    for (let i = 1; i <= QuantAsks; i ++) {
+    for (let i = 1; i <= QuantAsks; i++) {
         let messagePrint = `
             <li class="content Question${i}">
                 <div class="closedQuestion" onclick="openQuestionSelected(this)">
@@ -95,7 +96,7 @@ function createQuestionsArea(QuantAsks) {
                     <input type="text" placeholder="URL da imagem 3">
                 </div>
             </li>
-        ` 
+        `
 
         print.innerHTML += messagePrint;
     }
@@ -174,29 +175,50 @@ function checkErroInfoBasics(pos) { // Tratamento de erros para criação de nov
 function getOneQuizz(element) { // Começar quizz
     //create class for one quizz
     //change inner.html
+    let secondElement = element;
     let id = element.querySelector('.quizz-id').textContent;
     let position = getPosition(id);
+    console.log(allQuizzes);
     console.log(position);
     let allPage = document.querySelector('.quizzes');
-    let quizzSelected = document.querySelector('.quizz-selected')
+    let quizzSelected = document.querySelector('.quizz-selected');
+    let questionsArray = allQuizzes[position].questions;
+    let levelsArray = allQuizzes[position].levels;
+    let answersArray = [];
+    let answersOptionArray = [];
+
+    for (let i = 0; i < questionsArray.length; i++) {
+        answersArray[i] = questionsArray[i].answers;
+    }
+    let count = 0;
+    for (let i = 0; i < answersArray.length; i++){
+        answersOptionArray[i] = answersArray[i][count];
+        count++;  
+    }
+    count = 0;
+    console.log(levelsArray);
+    console.log(questionsArray);
+    console.log(answersArray);
+    console.log(answersOptionArray);
     allPage.classList.add("none");
     quizzSelected.classList.remove('none');
-    quizzSelected.innerHTML += `<div class="quizz-banner">
-    <img src="${allQuizzes[position].image}" alt="">
-    <p class="quizz-question">O quão potterhead é voce?</p>
-    </div>`
-    //esse número 4 corresponde a quantidade de perguntas requisitadas
-    for (let i = 0; i < 4; i++) {
+    quizzSelected.innerHTML +=
+        `<div class="quizz-banner">
+        <img src="${allQuizzes[position].image}" alt="">
+        <p class="quizz-question">${allQuizzes[position].title}</p>
+    </div>
+    `
+    for (let i = 0; i < questionsArray.length; i++) {
         quizzSelected.innerHTML += `<section class="selected-content">
         <div class="quizz-selected-container">
             <div class="question-container">
                 <div class="question-container-title">
-                    <p>${allQuizzes[position].title}</p>
+                    <p>${questionsArray[i].title}</p>
                 </div>
                 <div class="question-img-container">
                     <div>
-                        <img src="./images/test.jpg" alt="" class="question-img">
-                        <p class="answer">teste</p>
+                        <img src="${answersOptionArray[i].image}" alt="" class="question-img">
+                        <p class="answer">${answersOptionArray[i].title}</p>
                     </div>
                     <div>
                         <img src="./images/test.jpg" alt="" class="question-img">
@@ -216,7 +238,6 @@ function getOneQuizz(element) { // Começar quizz
     </section>`    
     }
 
-
     quizzSelected.innerHTML += `<section class="selected-content">
     <div class="quizz-selected-container">
     <div class="result">
@@ -230,10 +251,10 @@ function getOneQuizz(element) { // Começar quizz
                         </div>
                     </div>
                     <div class="button-container">
-                        <button class="restart-quizz">
+                        <button class="restart-quizz" onclick="restartQuizz()">
                             Reiniciar quizz
                         </button>
-                        <button class="back-home">
+                        <button class="back-home" onclick="backInitialPage()">
                             Voltar para Home
                         </button>
                     </div>
@@ -241,25 +262,24 @@ function getOneQuizz(element) { // Começar quizz
             </section>`;
 }
 
-function getPosition(id){
+function getPosition(id) {
     let idPosition = 0;
-    for(let i=0;i<allQuizzes.length;i++){
-        if(id==allQuizzes[i].id){
+    for (let i = 0; i < allQuizzes.length; i++) {
+        if (id == allQuizzes[i].id) {
             idPosition += i;
         }
     }
     return idPosition;
 }
 
-
-
-function getQuizzID() {
+function restartQuizz() {
 
 }
 
-function renderizeSelectedQuizz() {
-
+function backInitialPage() {
+    window.location.reload();
 }
+
 
 
 
