@@ -217,15 +217,15 @@ function getOneQuizz(element) { // Começar quizz
                 </div>
                 <div class="question-img-container">
                     <div>
-                        <img src="${answersOptionArray[i].image}" alt="" class="question-img">
-                        <p class="answer">${answersOptionArray[i].title}</p>
+                        <img src="${questionsArray[i].image}" alt="" class="question-img">
+                        <p class="answer">${questionsArray[i].title}</p>
                     </div>
                     <div>
                         <img src="./images/test.jpg" alt="" class="question-img">
                         <p class="answer">teste</p>
                     </div>
                     <div>
-                        <img src="${allQuizzes[position].image}" alt="" class="question-img">
+                        <img src="${answersArray[i].image}" alt="" class="question-img">
                         <p class="answer">teste</p>
                     </div>
                     <div>
