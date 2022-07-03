@@ -9,6 +9,7 @@ allQuizzesPromise.catch(connectionError);
 function getAllQuizzes(response) {
     allQuizzes = response.data;
     renderizeAllQuizzes(allQuizzes);
+    console.log (allQuizzes);
 }
 
 function connectionError(response) {
@@ -33,9 +34,11 @@ function renderizeAllQuizzes(allQuizzes) {
     }
 }
 
-function getIdOnClick(element) {
-    const ID = element.querySelector().textContent;
-}
+// Create New Quizz Area
+let titleNewQuizz = "";
+let URLNewQuizz = "";
+let questionsNewQuizz = [];
+let levelsNewQuizz = [];
 
 function createQuizz() { // Criar novo quizz
     let pageOff = document.querySelector(".quizzes");
@@ -44,24 +47,31 @@ function createQuizz() { // Criar novo quizz
     pageOn.classList.remove("none");
 }
 
-function goToCreateQuestions() { // Ir para criação de questões
-    const pageOff = document.querySelector(".basicsInfo");
-    const pageOn = document.querySelector(".questionsNewQuizz");
+function saveInfoBasicsNewQuizz() {
     const takes = document.querySelectorAll(".basicsInfo-content");
+    
+    titleNewQuizz = takes[0].value;
+    URLNewQuizz = takes[1].value;
 
-    const title = takes[0].value;
-    const URLnq = takes[1].value;
     const QuantAsks = Number(takes[2].value);
     const quantLevel = Number(takes[3].value);
 
-    console.log(title);
-    console.log(URLnq);
+    console.log(titleNewQuizz);
+    console.log(URLNewQuizz);
     console.log(QuantAsks);
     console.log(quantLevel);
 
-    let next = checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel);
+    let next = checkFieldsOnCreateQuestions(titleNewQuizz, URLNewQuizz, QuantAsks, quantLevel);
+    goToCreateQuestions(next, QuantAsks, quantLevel);
+}
+
+function goToCreateQuestions(next, QuantAsks, quantLevel) { // Ir para criação de questões
     if (next) {
         createQuestionsArea(QuantAsks);
+        createLevelsArea(quantLevel);
+
+        const pageOff = document.querySelector(".basicsInfo");
+        const pageOn = document.querySelector(".questionsNewQuizz");
 
         pageOff.classList.add("none");
         pageOn.classList.remove("none");
@@ -69,7 +79,7 @@ function goToCreateQuestions() { // Ir para criação de questões
 }
 
 function createQuestionsArea(QuantAsks) {
-    const print = document.querySelector(".bas-content");
+    const print = document.querySelector(".creatingNewQuestions .bas-content");
     print.innerHTML = ""
 
     for (let i = 1; i <= QuantAsks; i++) {
@@ -80,18 +90,97 @@ function createQuestionsArea(QuantAsks) {
                     <ion-icon name="create-outline"></ion-icon> <!-- Create -->
                 </span>
                 <div class="questions none">
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    <input type="text" placeholder="Texto da pergunta" class="titleQuestion${i}">
+                    <input type="text" placeholder="Cor de fundo da pergunta" class="colorQuestion${i}">
                     Resposta correta
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="text" placeholder="URL da imagem">
+                    <input type="text" placeholder="Resposta correta" class="rightQuestion${i}">
+                    <input type="text" placeholder="URL da imagem" class="imageRightQuestion${i}">
                     Respostas incorretas
-                    <input type="text" placeholder="Resposta incorreta 1">
-                    <input type="text" placeholder="URL da imagem 1">
-                    <input type="text" placeholder="Resposta incorreta 2">
-                    <input type="text" placeholder="URL da imagem 2">
-                    <input type="text" placeholder="Resposta incorreta 3">
-                    <input type="text" placeholder="URL da imagem 3">
+                    <input type="text" placeholder="Resposta incorreta 1" class="wrong1Question${i}">
+                    <input type="text" placeholder="URL da imagem 1" class="URLwrong1Question${i}">
+                    <input type="text" placeholder="Resposta incorreta 2" class="wrong2Question${i}">
+                    <input type="text" placeholder="URL da imagem 2" class="URLwrong2Question${i}">
+                    <input type="text" placeholder="Resposta incorreta 3" class="wrong3Question${i}">
+                    <input type="text" placeholder="URL da imagem 3" class="URLwrong3Question${i}">
+                </div>                           
+            </li>
+        `
+
+        print.innerHTML += messagePrint;
+    }
+}
+
+function saveQuestionsNewQuizz() {
+    const allQuestions = document.querySelectorAll(".creatingNewQuestions .bas-content .content");
+    for (let i = 1; i <= allQuestions.length; i ++) {
+        let answersNewQuizz = [];
+        answersNewQuizz.push({
+            text: document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .questions .rightQuestion${i}`).value,
+            image: document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .questions .imageRightQuestion${i}`).value,
+            isCorrectAnswer: true
+        })
+
+        for(let c = 1; c < 4; c ++) {
+            const wrongAsks = document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .questions .wrong${c}Question${i}`).value;
+            if (wrongAsks != "") {
+                answersNewQuizz.push({
+                    text: document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .questions .wrong${c}Question${i}`).value,
+                    image: document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .questions .wrong${c}Question${i}`).value,
+                    isCorrectAnswer: false
+                })
+            }
+        }
+
+        questionsNewQuizz.push({
+            title: document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .questions .titleQuestion${i}`).value,
+            color: document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .questions .colorQuestion${i}`).value,
+            answers: answersNewQuizz
+        })
+    }
+
+    const pageOff = document.querySelector(".creatingNewQuestions");
+    const pageOn = document.querySelector(".creatingLevels");
+
+    pageOff.classList.add("none");
+    pageOn.classList.remove("none");
+}
+
+function saveLevelsNewQuizz() {
+    levelsNewQuizz.push({
+        title: "Título do nível 1",
+        image: "https://http.cat/411.jpg",
+        text: "Descrição do nível 1",
+        minValue: 0
+    });
+}
+
+function saveNewQuizzOnAPI() {
+    let newQuizzAPI = {
+        title: titleNewQuizz,
+        image: URLNewQuizz,
+        questions: questionsNewQuizz,
+        levels: levelsNewQuizz
+    }
+
+    console.log(newQuizzAPI);
+}
+
+function createLevelsArea(quantLevel) {
+    const print = document.querySelector(".creatingLevels .bas-content");
+    print.innerHTML = ""
+
+    for (let i = 1; i <= quantLevel; i ++) {
+        let messagePrint = `
+            <li class="content closedFolder Level${i}" onclick="openLevelSelected(this)">              
+                <span class="closedLevel">
+                    <p class="areaTitle">Nível ${i}</p>
+                    <ion-icon name="create-outline"></ion-icon> <!-- Create -->
+                </span>
+                <div class="Levels none">
+                    <input type="text" placeholder="Título do nível">
+                    <input type="text" placeholder="% de acerto mínima">
+                    <input type="text" placeholder="URL da imagem do nível">
+                    <input type="text" placeholder="Descrição do nível">
                 </div>                           
             </li>
         `
@@ -108,7 +197,7 @@ function openQuestionSelected(element) {
 }
 
 function checkOthersCheckboxQuestions() {
-    const qtd = document.querySelectorAll(".bas-content li").length;
+    const qtd = document.querySelectorAll(".creatingNewQuestions .bas-content li").length;
 
     for (let i = 1; i <= qtd; i++) {
         document.querySelector(`.Question${i} .closedQuestion ion-icon`).classList.remove("none");
@@ -117,30 +206,26 @@ function checkOthersCheckboxQuestions() {
     }
 }
 
-function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // Tratamento de erros para criação de novo quizz - Informações básicas
+function checkFieldsOnCreateQuestions(titleNewQuizz, URLNewQuizz, QuantAsks, quantLevel) { // Tratamento de erros para criação de novo quizz - Informações básicas
     let retTitle = false;
     let retURLnq = false;
     let retQuantAsks = false;
     let retQuantLevel = false;
     let pos;
 
-    if (title.length >= 20 && title.length <= 36) {
+    if (titleNewQuizz.length >= 20 && titleNewQuizz.length <= 36) {
         retTitle = true;
         pos = 0;
         checkErroInfoBasics(pos);
-
-        console.log(retTitle);
     } else {
         pos = 0;
         showErroInfoBasics(pos);
     }
     try {
-        let URLver = new URL(URLnq);
+        let URLver = new URL(URLNewQuizz);
         retURLnq = true;
         pos = 1;
         checkErroInfoBasics(pos);
-
-        console.log(retURLnq);
     } catch (err) {
         pos = 1;
         showErroInfoBasics(pos);
@@ -149,8 +234,6 @@ function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // 
         retQuantAsks = true;
         pos = 2;
         checkErroInfoBasics(pos);
-
-        console.log(retQuantAsks);
     } else {
         pos = 2;
         showErroInfoBasics(pos);
@@ -159,8 +242,6 @@ function checkFieldsOnCreateQuestions(title, URLnq, QuantAsks, quantLevel) { // 
         retQuantLevel = true;
         pos = 3;
         checkErroInfoBasics(pos);
-
-        console.log(retQuantLevel);
     } else {
         pos = 3;
         showErroInfoBasics(pos);
