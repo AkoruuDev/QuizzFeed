@@ -9,7 +9,7 @@ allQuizzesPromise.catch(connectionError);
 function getAllQuizzes(response) {
     allQuizzes = response.data;
     renderizeAllQuizzes(allQuizzes);
-    console.log (allQuizzes);
+    console.log(allQuizzes);
 }
 
 function connectionError(response) {
@@ -56,7 +56,7 @@ function createQuizz() { // Criar novo quizz
 
 function saveInfoBasicsNewQuizz() {
     const takes = document.querySelectorAll(".basicsInfo-content");
-    
+
     titleNewQuizz = takes[0].value;
     URLNewQuizz = takes[1].value;
 
@@ -119,7 +119,7 @@ function createQuestionsArea(QuantAsks) {
 
 function saveQuestionsNewQuizz() {
     const allQuestions = document.querySelectorAll(".creatingNewQuestions .bas-content .content");
-    for (let i = 1; i <= allQuestions.length; i ++) {
+    for (let i = 1; i <= allQuestions.length; i++) {
         let answersNewQuizz = [];
         answersNewQuizz.push({
             text: document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .questions .rightQuestion${i}`).value,
@@ -127,7 +127,7 @@ function saveQuestionsNewQuizz() {
             isCorrectAnswer: true
         })
 
-        for(let c = 1; c < 4; c ++) {
+        for (let c = 1; c < 4; c++) {
             const wrongAsks = document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .questions .wrong${c}Question${i}`).value;
             if (wrongAsks != "") {
                 answersNewQuizz.push({
@@ -176,7 +176,7 @@ function createLevelsArea(quantLevel) {
     const print = document.querySelector(".creatingLevels .bas-content");
     print.innerHTML = ""
 
-    for (let i = 1; i <= quantLevel; i ++) {
+    for (let i = 1; i <= quantLevel; i++) {
         let messagePrint = `
             <li class="content closedFolder Level${i}" onclick="openLevelSelected(this)">              
                 <span class="closedLevel">
@@ -304,16 +304,15 @@ function getOneQuizz(element) { // Começar quizz
     let levelsArray = allQuizzes[position].levels;
     let answersArray = [];
     let answersOptionArray;
+    let k=0;
     for (let i = 0; i < questionsArray.length; i++) {
         answersArray[i] = questionsArray[i].answers;
     }
-
-
-    count = 0;
     console.log(levelsArray);
     console.log(questionsArray);
     console.log(answersArray);
-    console.log(answersOptionArray);
+    var lengths = answersArray.map(answersOption => answersOption.length);
+    console.log(lengths);
     allPage.classList.add("none");
     quizzSelected.classList.remove('none');
     quizzSelected.innerHTML +=
@@ -323,33 +322,34 @@ function getOneQuizz(element) { // Começar quizz
     </div>
     `
     for (let i = 0; i < questionsArray.length; i++) {
-        quizzSelected.innerHTML += `<section class="selected-content">
+        quizzSelected.innerHTML += `
+            <section class="selected-content">
                 <div class="quizz-selected-container">
                     <div class="question-container">
                         <div class="question-container-title">
                             <p>${questionsArray[i].title}</p>
                         </div>
+                    </div>
+                </div>
+            </section>`
+            for (let j = 0; j < lengths[i]; j++) {
+                quizzSelected.innerHTML +=
+                    `<section class="selected-content">
+                <div class="quizz-selected-container">
+                    <div class="question-container">
                         <div class="question-img-container">
                             <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
-                            </div>
-                            <div>
-                                <img src="./images/test.jpg" alt="" class="question-img">
-                                <p class="answer">teste</p>
+                                <img src="${questionsArray[i].answers[j].image}" alt="" class="question-img">
+                                <p class="answer">${questionsArray[i].answers[j].text}</p>
                             </div>
                         </div>
-                    </div>`
-
+                    </div>
+                </div>
+            </section>`
+            
+            }
     }
+
 
     quizzSelected.innerHTML += `<section class="selected-content">
     <div class="quizz-selected-container">
@@ -373,6 +373,7 @@ function getOneQuizz(element) { // Começar quizz
                     </div>
                 </div>
             </section>`;
+
 }
 
 function getPosition(id) {
