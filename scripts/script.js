@@ -1,4 +1,10 @@
 let allQuizzes = [];
+let correctAnswerBoolean = 'true';
+let resultCounter = 0;
+let levelsArray = [];
+let questionsArray = [];
+let quizzSelected;
+let clickNumbers = 0;
 
 const APIprefix = 'https://mock-api.driven.com.br/api/v7/buzzquizz/'
 
@@ -444,26 +450,19 @@ function checkErroInfoBasics(pos) {
 function getOneQuizz(element) { // Começar quizz
     //create class for one quizz
     //change inner.html
-    let secondElement = element;
     let id = element.querySelector('.quizz-id').textContent;
     let position = getPosition(id);
     console.log(allQuizzes);
-    console.log(position);
     let allPage = document.querySelector('.quizzes');
-    let quizzSelected = document.querySelector('.quizz-selected');
-    let questionsArray = allQuizzes[position].questions;
-    let levelsArray = allQuizzes[position].levels;
+    quizzSelected = document.querySelector('.quizz-selected');
+    questionsArray = allQuizzes[position].questions;
+    levelsArray = allQuizzes[position].levels;
     let answersArray = [];
-    let answersOptionArray;
     let k=0;
     for (let i = 0; i < questionsArray.length; i++) {
         answersArray[i] = questionsArray[i].answers;
     }
-    console.log(levelsArray);
-    console.log(questionsArray);
-    console.log(answersArray);
     var lengths = answersArray.map(answersOption => answersOption.length);
-    console.log(lengths);
     allPage.classList.add("none");
     quizzSelected.classList.remove('none');
     quizzSelected.innerHTML +=
@@ -488,29 +487,73 @@ function getOneQuizz(element) { // Começar quizz
                     `<section class="selected-content">
                 <div class="quizz-selected-container">
                     <div class="question-container">
-                        <div class="question-img-container">
+                        <div class="question-img-container" onclick="correctAnswer(this)">
                             <div>
                                 <img src="${questionsArray[i].answers[j].image}" alt="" class="question-img">
                                 <p class="answer">${questionsArray[i].answers[j].text}</p>
+                                <div class="correct-answer">${questionsArray[i].answers[j].isCorrectAnswer}</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>`
-            
             }
     }
+    
+}
 
+function getPosition(id) {
+    let idPosition = 0;
+    for (let i = 0; i < allQuizzes.length; i++) {
+        if (id == allQuizzes[i].id) {
+            idPosition += i;
+        }
+    }
+    return idPosition;
+}
 
-    quizzSelected.innerHTML += `<section class="selected-content">
+function correctAnswer(element){
+    let trueOrFalse = element.querySelector('.correct-answer').textContent;
+    if(trueOrFalse===correctAnswerBoolean){
+        element.classList.add('correct');
+        resultCounter++;
+        clickNumbers++;
+    }
+    else{
+        element.classList.add('false');
+        clickNumbers++;
+    }
+    if(clickNumbers===questionsArray.length){
+        let resultPercentage = resultCalculator(resultCounter, questionsArray.length);
+        console.log(resultPercentage);
+        showResult(quizzSelected, resultPercentage);
+    }
+}
+
+function resultCalculator(counter, length){
+    return (100*counter)/length;
+}
+
+function showResult(resultHTML, percentage){
+    let correctLevelIndex = 0;
+    for(let i=1;i<levelsArray.length;i++){
+        if(percentage>=levelsArray[i].minValue){
+            correctLevelIndex = i;
+        }
+    }
+    console.log(correctLevelIndex);
+    resultPrinter(resultHTML, correctLevelIndex);
+}
+
+ function resultPrinter(result, index){
+    result.innerHTML += `<section class="selected-content">
     <div class="quizz-selected-container">
     <div class="result">
                         <div>
-                            <h1 class="result-title">88% de acerto: Você é praticamente um aluno de Hogwarts!</h1>
-                            <img src="./images/test.jpg" alt="" class="result-img">
+                            <h1 class="result-title">${levelsArray[index].text}</h1>
+                            <img src="${levelsArray[index].image}" alt="" class="result-img">
                             <p class="final-message">
-                                Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique
-                                no botão abaixo para usar o vira-tempo e reiniciar este teste.
+                            ${levelsArray[index].text}
                             </p>
                         </div>
                     </div>
@@ -524,17 +567,6 @@ function getOneQuizz(element) { // Começar quizz
                     </div>
                 </div>
             </section>`;
-
-}
-
-function getPosition(id) {
-    let idPosition = 0;
-    for (let i = 0; i < allQuizzes.length; i++) {
-        if (id == allQuizzes[i].id) {
-            idPosition += i;
-        }
-    }
-    return idPosition;
 }
 
 function restartQuizz() {
@@ -544,6 +576,7 @@ function restartQuizz() {
 function backInitialPage() {
     window.location.reload();
 }
+
 
 
 
