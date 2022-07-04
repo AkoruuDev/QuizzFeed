@@ -465,11 +465,11 @@ function getOneQuizz(element) { // Começar quizz
     var lengths = answersArray.map(answersOption => answersOption.length);
     allPage.classList.add("none");
     quizzSelected.classList.remove('none');
-    quizzSelected.innerHTML +=
-        `<div class="quizz-banner">
-        <img src="${allQuizzes[position].image}" alt="">
-        <p class="quizz-question">${allQuizzes[position].title}</p>
-    </div>
+    quizzSelected.innerHTML += `
+        <div class="quizz-banner">
+            <img src="${allQuizzes[position].image}" alt="">
+            <p class="quizz-question">${allQuizzes[position].title}</p>
+        </div>
     `
     for (let i = 0; i < questionsArray.length; i++) {
         quizzSelected.innerHTML += `
@@ -483,20 +483,21 @@ function getOneQuizz(element) { // Começar quizz
                 </div>
             </section>`
             for (let j = 0; j < lengths[i]; j++) {
-                quizzSelected.innerHTML +=
-                    `<section class="selected-content">
-                <div class="quizz-selected-container">
-                    <div class="question-container">
-                        <div class="question-img-container" onclick="correctAnswer(this)">
-                            <div>
-                                <img src="${questionsArray[i].answers[j].image}" alt="" class="question-img">
-                                <p class="answer">${questionsArray[i].answers[j].text}</p>
-                                <div class="correct-answer">${questionsArray[i].answers[j].isCorrectAnswer}</div>
+                quizzSelected.innerHTML +=`
+                    <section class="selected-content">
+                        <div class="quizz-selected-container">
+                            <div class="question-container">
+                                <div class="question-img-container" onclick="correctAnswer(this)">
+                                    <div>
+                                        <img src="${questionsArray[i].answers[j].image}" alt="" class="question-img">
+                                        <p class="answer">${questionsArray[i].answers[j].text}</p>
+                                        <div class="correct-answer">${questionsArray[i].answers[j].isCorrectAnswer}</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>`
+                    </section>
+                `
             }
     }
     
@@ -545,28 +546,30 @@ function showResult(resultHTML, percentage){
     resultPrinter(resultHTML, correctLevelIndex);
 }
 
- function resultPrinter(result, index){
-    result.innerHTML += `<section class="selected-content">
-    <div class="quizz-selected-container">
-    <div class="result">
-                        <div>
-                            <h1 class="result-title">${levelsArray[index].text}</h1>
-                            <img src="${levelsArray[index].image}" alt="" class="result-img">
-                            <p class="final-message">
-                            ${levelsArray[index].text}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="button-container">
-                        <button class="restart-quizz" onclick="restartQuizz()">
-                            Reiniciar quizz
-                        </button>
-                        <button class="back-home" onclick="backInitialPage()">
-                            Voltar para Home
-                        </button>
+function resultPrinter(result, index){
+    result.innerHTML += `
+        <section class="selected-content">
+            <div class="quizz-selected-container">
+                <div class="result">
+                    <div>
+                        <h1 class="result-title">${levelsArray[index].text}</h1>
+                        <img src="${levelsArray[index].image}" alt="" class="result-img">
+                        <p class="final-message">
+                        ${levelsArray[index].text}
+                        </p>
                     </div>
                 </div>
-            </section>`;
+                <div class="button-container">
+                    <button class="restart-quizz" onclick="restartQuizz()">
+                        Reiniciar quizz
+                    </button>
+                    <button class="back-home" onclick="backInitialPage()">
+                        Voltar para Home
+                    </button>
+                </div>
+            </div>
+        </section>
+    `;
 }
 
 function restartQuizz() {
@@ -576,12 +579,3 @@ function restartQuizz() {
 function backInitialPage() {
     window.location.reload();
 }
-
-
-
-
-
-
-
-
-
