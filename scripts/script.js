@@ -330,72 +330,84 @@ function saveLevelsNewQuizz() {
 
     let rettitleNewQuizz = false;
     let c = false;
+    let counter = 1;
 
     let length = document.querySelectorAll(".creatingLevels .bas-content .content").length;
     for (let i = 1; i <= length; i++) {
-        let titleName = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelTitle`).length;
-        console.log(titleName);
-        if (titleName < 20) {
+        let titleName = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelTitle`);
+
+        if (titleName.length < 20 || titleName.value == '') {
             document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelTitle`).classList.remove("none");
             rettitleNewQuizz = false;
         } else {
             document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelTitle`).classList.add("none");
             rettitleNewQuizz = true;
+            counter ++;
         }
 
         let minValue = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .minValue`).value;
-        console.log(minValue);
-        if (minValue < 0 || minValue > 100) {
+        if (minValue == '' || isNaN(minValue) || (minValue < 0 || minValue > 100)) {
             document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorminValue`).classList.remove("none");
             rettitleNewQuizz = false;
         } else {
             document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorminValue`).classList.add("none");
             rettitleNewQuizz = true;
+            counter ++;
         }
 
         let levelImage = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelImage`).value;
-        console.log(levelImage);
         try {
             let URLver = new URL(levelImage);
             document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelImage`).classList.add("none");
             rettitleNewQuizz = true;
+            counter ++
         } catch (err) {
             document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelImage`).classList.remove("none");
             rettitleNewQuizz = false;
         }
 
-        let levelDescription = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelDescription`).length;
-        console.log(levelDescription);
-        if (levelDescription < 30) {
+        let levelDescription = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelDescription`);
+        if (levelDescription.value == '' || levelDescription.length < 30) {
             document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelDescription`).classList.remove("none");
             rettitleNewQuizz = false;
         } else {
             document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelDescription`).classList.add("none");
             rettitleNewQuizz = true;
+            counter ++
         }
     }
+
     for (let i = 1; i <= length; i++) {
-        let minValue = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .minValue`).value;
+        let minValue = document.querySelector(`.creatingLevels .bas-content .level${i} .Levels .minValue`).value;
         let count = 1
-        if (minValue == 0) {
-            c = true;
+        if (minValue == '') {
+            count ++
         } else {
-            count = count + 1;
+            minValue = Number(minValue)
+            if (minValue === 0) {
+                c = true;
+                break;
+            } else {
+                count ++
+            }
         }
 
         if (count == length) {
             alert("É necessário que pelo menos um nível tenha o acerto minimo de 0%")
+            break;
         }
     }
 
+    console.log(rettitleNewQuizz);
+    console.log(c)
     if (rettitleNewQuizz && c) {
         const allLevels = document.querySelectorAll(".creatingLevels .bas-content .content");
         for (let i = 1; i <= allLevels.length; i ++) {
             levelsNewQuizz.push({
-                title: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelTitle`).value,
-                image: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelImage`).value,
-                text: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelText`).value,
-                minValue: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .minValue`).value
+                title: document.querySelector(`.creatingLevels .bas-content .level${i} .Levels .levelTitle`).value,
+                image: document.querySelector(`.creatingLevels .bas-content .level${i} .Levels .levelImage`).value,
+                text: document.querySelector(`.creatingLevels .bas-content .level${i} .Levels .levelDescription`).value,
+                minValue: document.querySelector(`.creatingLevels .bas-content .level${i} .Levels .minValue`).value
             });
         }
 
