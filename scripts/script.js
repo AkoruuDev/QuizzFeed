@@ -2,6 +2,9 @@ let allQuizzes = [];
 let correctAnswerBoolean = 'true';
 let resultCounter = 0;
 let levelsArray = [];
+let questionsArray = [];
+let quizzSelected;
+let clickNumbers = 0;
 
 const APIprefix = 'https://mock-api.driven.com.br/api/v7/buzzquizz/'
 
@@ -328,8 +331,8 @@ function getOneQuizz(element) { // Começar quizz
     let position = getPosition(id);
     console.log(allQuizzes);
     let allPage = document.querySelector('.quizzes');
-    let quizzSelected = document.querySelector('.quizz-selected');
-    let questionsArray = allQuizzes[position].questions;
+    quizzSelected = document.querySelector('.quizz-selected');
+    questionsArray = allQuizzes[position].questions;
     levelsArray = allQuizzes[position].levels;
     let answersArray = [];
     let k=0;
@@ -373,9 +376,7 @@ function getOneQuizz(element) { // Começar quizz
             </section>`
             }
     }
-    let resultPercentage = resultCalculator(resultCounter, questionsArray.length);
-    showResult(quizzSelected, resultPercentage);
-    resultCounter = 0;
+    
 }
 
 function getPosition(id) {
@@ -393,25 +394,32 @@ function correctAnswer(element){
     if(trueOrFalse===correctAnswerBoolean){
         element.classList.add('correct');
         resultCounter++;
+        clickNumbers++;
     }
     else{
         element.classList.add('false');
+        clickNumbers++;
     }
-
+    if(clickNumbers===questionsArray.length){
+        let resultPercentage = resultCalculator(resultCounter, questionsArray.length);
+        console.log(resultPercentage);
+        showResult(quizzSelected, resultPercentage);
+    }
 }
 
 function resultCalculator(counter, length){
     return (100*counter)/length;
 }
 
-async function showResult(resultHTML, percentage){
+function showResult(resultHTML, percentage){
     let correctLevelIndex = 0;
     for(let i=1;i<levelsArray.length;i++){
-        if(percentage>=levelsArray[i].minValue && percentage<levelsArray[i+1]){
-            index = i;
+        if(percentage>=levelsArray[i].minValue){
+            correctLevelIndex = i;
         }
     }
-    var finished = await resultPrinter(resultHTML, correctLevelIndex);
+    console.log(correctLevelIndex);
+    resultPrinter(resultHTML, correctLevelIndex);
 }
 
  function resultPrinter(result, index){
@@ -436,7 +444,6 @@ async function showResult(resultHTML, percentage){
                     </div>
                 </div>
             </section>`;
-
 }
 
 function restartQuizz() {
