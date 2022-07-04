@@ -153,7 +153,6 @@ function saveQuestionsNewQuizz() {
     let rettitleNewQuizz = false;
 
     let length = document.querySelectorAll(".creatingNewQuestions .bas-content .content").length;
-    console.log(rettitleNewQuizz);
     for (let i = 1; i <= length; i++) {
         let titleQuestion = document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .titleQuestion${i}`).value
         if (titleQuestion.length < 20) {
@@ -241,19 +240,6 @@ function saveQuestionsNewQuizz() {
                 rettitleNewQuizz = false;
             }
         }
-
-        let wrong4 = document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .wrong4Question${i}`).value
-        if (wrong4 != '') {
-            let URLw2 = document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .URLWrong4Question${i}`).value
-            try {
-                let URLver = new URL(URLw2);
-                document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .errorURLwrong4Question${i}`).classList.add("none");
-                rettitleNewQuizz = true;
-            } catch (err) {
-                document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .errorURLwrong4Question${i}`).classList.remove("none");
-                rettitleNewQuizz = false;
-            }
-        }
         
         console.log(rettitleNewQuizz)
     }
@@ -307,12 +293,17 @@ function createLevelsArea(quantLevel) {
                 </span>
                 <div class="Levels none">
                     <input type="text" placeholder="Título do nível" class="levelTitle">
+                    <p class="error errorlevelTitle none">este campo deve ter, no mínimo, 10 caracteres</p>
                     <input type="text" placeholder="% de acerto mínima" class="minValue">
+                    <p class="error errorminValue none">Apenas números, de 0 à 100</p>
                     <input type="text" placeholder="URL da imagem do nível" class="levelImage">
-                    <textarea cols="30" rows="10" placeholder="Descrição do Nível" class="levelText"></textarea>
+                    <p class="error errorlevelImage none">Este campo deve estar no formato URL (de link)</p>
+                    <textarea cols="30" rows="10" placeholder="Descrição do Nível" class="levelDescription"></textarea>
+                    <p class="error errorlevelDescription none">este campo deve ter, no mínimo, 30 caracteres</p>
                 </div>                           
             </li>
         `
+        // .creatingLevels .bas-content .Level1 .errorlevelImage1
 
         print.innerHTML += messagePrint;
     }
@@ -336,23 +327,87 @@ function checkOthersCheckboxLevels() {
 }
 
 function saveLevelsNewQuizz() {
-    const allLevels = document.querySelectorAll(".creatingLevels .bas-content .content");
-    for (let i = 1; i <= allLevels.length; i ++) {
-        levelsNewQuizz.push({
-            title: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelTitle`).value,
-            image: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelImage`).value,
-            text: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelText`).value,
-            minValue: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .minValue`).value
-        });
+    levelsNewQuizz = [];
+
+    let rettitleNewQuizz = false;
+    let c = false;
+
+    let length = document.querySelectorAll(".creatingLevels .bas-content .content").length;
+    for (let i = 1; i <= length; i++) {
+        let titleName = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelTitle`).length;
+        console.log(titleName);
+        if (titleName < 20) {
+            document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelTitle`).classList.remove("none");
+            rettitleNewQuizz = false;
+        } else {
+            document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelTitle`).classList.add("none");
+            rettitleNewQuizz = true;
+        }
+
+        let minValue = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .minValue`).value;
+        console.log(minValue);
+        if (minValue < 0 || minValue > 100) {
+            document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorminValue`).classList.remove("none");
+            rettitleNewQuizz = false;
+        } else {
+            document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorminValue`).classList.add("none");
+            rettitleNewQuizz = true;
+        }
+
+        let levelImage = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelImage`).value;
+        console.log(levelImage);
+        try {
+            let URLver = new URL(levelImage);
+            document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelImage`).classList.add("none");
+            rettitleNewQuizz = true;
+        } catch (err) {
+            document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelImage`).classList.remove("none");
+            rettitleNewQuizz = false;
+        }
+
+        let levelDescription = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelDescription`).length;
+        console.log(levelDescription);
+        if (levelDescription < 30) {
+            document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelDescription`).classList.remove("none");
+            rettitleNewQuizz = false;
+        } else {
+            document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .errorlevelDescription`).classList.add("none");
+            rettitleNewQuizz = true;
+        }
+    }
+    for (let i = 1; i <= length; i++) {
+        let minValue = document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .minValue`).value;
+        let count = 1
+        if (minValue == 0) {
+            c = true;
+        } else {
+            count = count + 1;
+        }
+
+        if (count == length) {
+            alert("É necessário que pelo menos um nível tenha o acerto minimo de 0%")
+        }
     }
 
-    createEndQuizzArea()
+    if (rettitleNewQuizz && c) {
+        const allLevels = document.querySelectorAll(".creatingLevels .bas-content .content");
+        for (let i = 1; i <= allLevels.length; i ++) {
+            levelsNewQuizz.push({
+                title: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelTitle`).value,
+                image: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelImage`).value,
+                text: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelText`).value,
+                minValue: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .minValue`).value
+            });
+        }
 
-    const pageOff = document.querySelector(".creatingLevels");
-    const pageOn = document.querySelector(".createdNewQuizz");
+        createEndQuizzArea()
 
-    pageOff.classList.add("none");
-    pageOn.classList.remove("none");
+        const pageOff = document.querySelector(".creatingLevels");
+        const pageOn = document.querySelector(".createdNewQuizz");
+
+        pageOff.classList.add("none");
+        pageOn.classList.remove("none");
+    }
 }
 
 function createEndQuizzArea() {
