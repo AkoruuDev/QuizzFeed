@@ -34,7 +34,7 @@ function renderizeAllQuizzes(allQuizzes) {
         <p class="quizz-id none">${allQuizzes[i].id}</p>
         <img src="${allQuizzes[i].image}" alt="Image">
         <div class="gradient"></div>
-        <p class="title">${allQuizzes[i].title}</p>
+        <p class="quizz-boxes-title">${allQuizzes[i].title}</p>
         </div>`
         i++
     }
@@ -335,7 +335,6 @@ function getOneQuizz(element) { // Começar quizz
     questionsArray = allQuizzes[position].questions;
     levelsArray = allQuizzes[position].levels;
     let answersArray = [];
-    let k=0;
     for (let i = 0; i < questionsArray.length; i++) {
         answersArray[i] = questionsArray[i].answers;
     }
@@ -403,7 +402,7 @@ function correctAnswer(element){
     if(clickNumbers===questionsArray.length){
         let resultPercentage = resultCalculator(resultCounter, questionsArray.length);
         console.log(resultPercentage);
-        showResult(quizzSelected, resultPercentage);
+        setInterval(showResult(quizzSelected, resultPercentage), 2000);
     }
 }
 
@@ -412,8 +411,8 @@ function resultCalculator(counter, length){
 }
 
 function showResult(resultHTML, percentage){
-    let correctLevelIndex = 0;
-    for(let i=1;i<levelsArray.length;i++){
+    let correctLevelIndex;
+    for(let i=0;i<levelsArray.length;i++){
         if(percentage>=levelsArray[i].minValue){
             correctLevelIndex = i;
         }

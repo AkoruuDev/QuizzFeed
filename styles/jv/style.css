@@ -153,3 +153,7 @@
 .false{
     background-color: red;
 }
+
+.quizz-boxes-title{
+    word-wrap: break-word;
+}
