@@ -411,13 +411,9 @@ function saveLevelsNewQuizz() {
             });
         }
 
-        createEndQuizzArea()
-
-        const pageOff = document.querySelector(".creatingLevels");
-        const pageOn = document.querySelector(".createdNewQuizz");
-
-        pageOff.classList.add("none");
-        pageOn.classList.remove("none");
+        createEndQuizzArea();
+        saveNewQuizzOnAPI();
+        
     }
 }
 
@@ -434,6 +430,14 @@ function createEndQuizzArea() {
     print.innerHTML += message;
 }
 
+function showEndQuizzArea() {
+    const pageOff = document.querySelector(".creatingLevels");
+    const pageOn = document.querySelector(".createdNewQuizz");
+
+    pageOff.classList.add("none");
+    pageOn.classList.remove("none");
+}
+
 function saveNewQuizzOnAPI() {
     let newQuizzAPI = {
         title: titleNewQuizz,
@@ -441,6 +445,11 @@ function saveNewQuizzOnAPI() {
         questions: questionsNewQuizz,
         levels: levelsNewQuizz
     }
+
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", newQuizzAPI);
+
+    promise.then(showEndQuizzArea)
+    promise.catch(alert('Deu ruim, ai'))
 
     console.log(newQuizzAPI);
 }
