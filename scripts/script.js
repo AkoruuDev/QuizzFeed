@@ -163,7 +163,7 @@ function saveQuestionsNewQuizz() {
         }
 
         let colorQuestion = document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .colorQuestion${i}`).value
-        
+
         if (!reg.test(`${colorQuestion}`)) {
             document.querySelector(`.creatingNewQuestions .bas-content .Question${i} .errorcolorQuestion${i}`).classList.remove("none");
             rettitleNewQuizz = false;
@@ -239,7 +239,7 @@ function saveQuestionsNewQuizz() {
                 rettitleNewQuizz = false;
             }
         }
-        
+
         console.log(rettitleNewQuizz)
     }
 
@@ -402,7 +402,7 @@ function saveLevelsNewQuizz() {
     console.log(c)
     if (rettitleNewQuizz && c) {
         const allLevels = document.querySelectorAll(".creatingLevels .bas-content .content");
-        for (let i = 1; i <= allLevels.length; i ++) {
+        for (let i = 1; i <= allLevels.length; i++) {
             levelsNewQuizz.push({
                 title: document.querySelector(`.creatingLevels .bas-content .level${i} .Levels .levelTitle`).value,
                 image: document.querySelector(`.creatingLevels .bas-content .level${i} .Levels .levelImage`).value,
@@ -519,7 +519,8 @@ function getOneQuizz(element) { // Começar quizz
     let id = element.querySelector('.quizz-id').textContent;
     let position = getPosition(id);
     let allPage = document.querySelector('.quizzes');
-    quizzSelected = document.querySelector('.quizz-selected');
+    quizzSelected = document.querySelector('.quizz-selected-container');
+    let bannerHTML = document.querySelector('.quizz-banner');
     questionsArray = allQuizzes[position].questions;
     levelsArray = allQuizzes[position].levels;
     let answersArray = [];
@@ -527,44 +528,44 @@ function getOneQuizz(element) { // Começar quizz
         answersArray[i] = questionsArray[i].answers;
     }
     var lengths = answersArray.map(answersOption => answersOption.length);
+    let randomArray = [];
     allPage.classList.add("none");
     quizzSelected.classList.remove('none');
-    quizzSelected.innerHTML += `
-        <div class="quizz-banner">
-            <img src="${allQuizzes[position].image}" alt="">
-            <p class="quizz-question">${allQuizzes[position].title}</p>
-        </div>
-    `
+    bannerHTML.innerHTML += `
+    <img src="${allQuizzes[position].image}" alt="">
+    <p class="quizz-question">${allQuizzes[position].title}</p>`
+    
     for (let i = 0; i < questionsArray.length; i++) {
         quizzSelected.innerHTML += `
-            <section class="selected-content">
-                <div class="quizz-selected-container">
-                    <div class="question-container">
-                        <div class="question-container-title">
-                            <p>${questionsArray[i].title}</p>
-                        </div>
+                    <div class="question-container-title">
+                        <p>${questionsArray[i].title}</p>
                     </div>
-                </div>
-            </section>`
-            for (let j = 0; j < lengths[i]; j++) {
-                quizzSelected.innerHTML +=`
-                    <section class="selected-content">
-                        <div class="quizz-selected-container">
-                            <div class="question-container">
+                `
+        for(let k=0;k<lengths[i];k++){
+            randomArray.push(k);
+        }
+        for (let j = 0; j < lengths[i]; j++) {
+            let randomValue = randomArray[Math.floor(randomArray.length * Math.random())];
+            console.log(randomValue);
+            quizzSelected.innerHTML += `
+                            <div class="question-container-grid">
                                 <div class="question-img-container" onclick="correctAnswer(this)">
-                                    <div>
-                                        <img src="${questionsArray[i].answers[j].image}" alt="" class="question-img">
-                                        <p class="answer">${questionsArray[i].answers[j].text}</p>
-                                        <div class="correct-answer">${questionsArray[i].answers[j].isCorrectAnswer}</div>
-                                    </div>
+                                    <img src="${questionsArray[i].answers[randomValue].image}" alt="" class="question-img">
+                                    <p class="question-answer">${questionsArray[i].answers[randomValue].text}</p>
+                                    <div class="correct-answer">${questionsArray[i].answers[randomValue].isCorrectAnswer}</div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
+                       
                 `
+            for (let i = 0; i < randomArray.length; i++) {
+                if (randomArray[i] === randomValue) {
+                    randomArray.splice(i, 1);
+                }
             }
-    }
-    
+        }
+        
+    }   
+
 }
 
 function getPosition(id) {
@@ -577,43 +578,46 @@ function getPosition(id) {
     return idPosition;
 }
 
-function correctAnswer(element){
+function correctAnswer(element) {
     let trueOrFalse = element.querySelector('.correct-answer').textContent;
-    if(trueOrFalse===correctAnswerBoolean){
-        element.classList.add('correct');
+    let text = element.querySelector('.question-answer');
+    if (trueOrFalse === correctAnswerBoolean) {
+        text.classList.add('correct');
         resultCounter++;
         clickNumbers++;
     }
-    else{
-        element.classList.add('false');
+    else {
+        text.classList.add('false');
         clickNumbers++;
     }
-    if(clickNumbers===questionsArray.length){
+    if (clickNumbers === questionsArray.length) {
         let resultPercentage = resultCalculator(resultCounter, questionsArray.length);
         console.log(resultPercentage);
         setInterval(showResult(quizzSelected, resultPercentage), 2000);
     }
 }
 
-function resultCalculator(counter, length){
-    return (100*counter)/length;
+function resultCalculator(counter, length) {
+    return (100 * counter) / length;
 }
 
-function showResult(resultHTML, percentage){
+function showResult(resultHTML, percentage) {
     let correctLevelIndex;
-    for(let i=0;i<levelsArray.length;i++){
-        if(percentage>=levelsArray[i].minValue){
+
+    for (let i = 0; i < levelsArray.length; i++) {
+        if (percentage >= levelsArray[i].minValue) {
             correctLevelIndex = i;
         }
     }
+    Math.round(percentage);
     console.log(correctLevelIndex);
+    console.log(percentage);
     resultPrinter(resultHTML, correctLevelIndex);
 }
 
-function resultPrinter(result, index){
+function resultPrinter(result, index) {
     result.innerHTML += `
-        <section class="selected-content">
-            <div class="quizz-selected-container">
+        
                 <div class="result">
                     <div>
                         <h1 class="result-title">${levelsArray[index].text}</h1>
@@ -631,9 +635,12 @@ function resultPrinter(result, index){
                         Voltar para Home
                     </button>
                 </div>
-            </div>
-        </section>
+            
     `;
+    result.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+    });
 }
 
 function restartQuizz() {

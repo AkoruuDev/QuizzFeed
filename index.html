@@ -54,7 +54,7 @@
                     <p>Todos os quizzes</p>
                 </h1>
                 <div class="all-quizzes-container">
-                    
+
                 </div>
             </div>
         </main>
@@ -68,7 +68,8 @@
                             <p class="error none">O titulo deve ter entre 20 e 36 caracteres</p>
                             <input type="text" class="basicsInfo-content" placeholder="URL da imagem do seu quizz">
                             <p class="error none">Este campo deve estar no formato URL (de link)</p>
-                            <input type="text" class="basicsInfo-content" placeholder="Quantidade de perguntas do quizz">
+                            <input type="text" class="basicsInfo-content"
+                                placeholder="Quantidade de perguntas do quizz">
                             <p class="error none">No mínimo 3 perguntas</p>
                             <input type="text" class="basicsInfo-content" placeholder="Quantidade de níveis do quizz">
                             <p class="error none">no mínimo 2 níveis</p>
@@ -81,7 +82,7 @@
                     <div class="creatingNewQuestions">
                         <h2 class="titleNewQuizz">Crie suas perguntas</h2>
                         <ol class="bas-content">
-                        
+
                         </ol>
                         <button class="next" onclick="saveQuestionsNewQuizz()">Prosseguir para criar níveis</button>
                     </div>
@@ -93,11 +94,11 @@
                         </ol>
                         <button class="next" onclick="saveLevelsNewQuizz()">Finalizar Quizz</button>
                     </div>
-                    
+
                     <div class="createdNewQuizz none">
                         <h2 class="titleNewQuizz">Seu quizz está pronto!</h2>
                         <div class="bas-content">
-                            
+
                         </div>
                         <button class="next" onclick="">Acessar Quizz</button>
                         <button class="back-home" onclick="backInitialPage()">Voltar para home</button>
@@ -105,10 +106,15 @@
                 </div>
             </div>
         </main>
-        <div class="quizz-selected none">
-           
-            
-            
+        <div class="quizz-selected">
+            <div class="quizz-banner">
+                
+            </div>
+            <section class="selected-content">
+                <div class="quizz-selected-container">
+
+                </div>
+            </section>
         </div>
     </section>
     <!--    Libary      -->
