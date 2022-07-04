@@ -15,7 +15,6 @@ allQuizzesPromise.catch(connectionError);
 function getAllQuizzes(response) {
     allQuizzes = response.data;
     renderizeAllQuizzes(allQuizzes);
-    console.log(allQuizzes);
 }
 
 function connectionError(response) {
@@ -507,7 +506,6 @@ function getOneQuizz(element) { // Começar quizz
     //change inner.html
     let id = element.querySelector('.quizz-id').textContent;
     let position = getPosition(id);
-    console.log(allQuizzes);
     let allPage = document.querySelector('.quizzes');
     quizzSelected = document.querySelector('.quizz-selected');
     questionsArray = allQuizzes[position].questions;
