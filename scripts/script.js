@@ -43,6 +43,13 @@ let URLNewQuizz = "";
 let questionsNewQuizz = [];
 let levelsNewQuizz = [];
 
+function sNewQuiz() {
+    console.log(titleNewQuizz);
+    console.log(URLNewQuizz);
+    console.log(questionsNewQuizz);
+    console.log(levelsNewQuizz);
+}
+
 function createQuizz() { // Criar novo quizz
     let pageOff = document.querySelector(".quizzes");
     let pageOn = document.querySelector(".newQuizz");
@@ -93,7 +100,7 @@ function createQuestionsArea(QuantAsks) {
                     <ion-icon name="create-outline"></ion-icon> <!-- Create -->
                 </span>
                 <div class="questions none">
-                    <input type="text" placeholder="Texto da pergunta" class="titleQuestion${i}">
+                    <input type="text" placeholder="Sua pergunta" class="titleQuestion${i}">
                     <input type="text" placeholder="Cor de fundo da pergunta" class="colorQuestion${i}">
                     Resposta correta
                     <input type="text" placeholder="Resposta correta" class="rightQuestion${i}">
@@ -149,13 +156,41 @@ function saveQuestionsNewQuizz() {
 }
 
 function saveLevelsNewQuizz() {
-    levelsNewQuizz.push({
-        title: "Título do nível 1",
-        image: "https://http.cat/411.jpg",
-        text: "Descrição do nível 1",
-        minValue: 0
-    });
+    const allLevels = document.querySelectorAll(".creatingLevels .bas-content .content");
+    for (let i = 1; i <= allLevels.length; i ++) {
+        levelsNewQuizz.push({
+            title: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelTitle`).value,
+            image: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelImage`).value,
+            text: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .levelText`).value,
+            minValue: document.querySelector(`.creatingLevels .bas-content .Level${i} .Levels .minValue`).value
+        });
+    }
+
+    createEndQuizzArea()
+
+    const pageOff = document.querySelector(".creatingLevels");
+    const pageOn = document.querySelector(".createdNewQuizz");
+
+    pageOff.classList.add("none");
+    pageOn.classList.remove("none");
 }
+
+function createEndQuizzArea() {
+    const print = document.querySelector(".createdNewQuizz .bas-content");
+    print.innerHTML = ""
+    message = `
+        <div class="quizz-boxes">
+            <img src="${URLNewQuizz}" alt="Image">
+            <div class="gradient"></div>
+            <p class="title">${titleNewQuizz}</p>
+        </div>
+    `
+    print.innerHTML += message;
+}
+
+
+
+
 
 function saveNewQuizzOnAPI() {
     let newQuizzAPI = {
@@ -180,10 +215,10 @@ function createLevelsArea(quantLevel) {
                     <ion-icon name="create-outline"></ion-icon> <!-- Create -->
                 </span>
                 <div class="Levels none">
-                    <input type="text" placeholder="Título do nível">
-                    <input type="text" placeholder="% de acerto mínima">
-                    <input type="text" placeholder="URL da imagem do nível">
-                    <input type="text" placeholder="Descrição do nível">
+                    <input type="text" placeholder="Título do nível" class="levelTitle">
+                    <input type="text" placeholder="% de acerto mínima" class="minValue">
+                    <input type="text" placeholder="URL da imagem do nível" class="levelImage">
+                    <textarea cols="30" rows="10" placeholder="Descrição do Nível" class="levelText"></textarea>
                 </div>                           
             </li>
         `
@@ -206,6 +241,23 @@ function checkOthersCheckboxQuestions() {
         document.querySelector(`.Question${i} .closedQuestion ion-icon`).classList.remove("none");
         document.querySelector(`.Question${i} .questions`).classList.add("none");
         document.querySelector(`.Question${i}`).classList.add("closedFolder");
+    }
+}
+
+function openLevelSelected(element) {
+    checkOthersCheckboxLevels();
+    element.querySelector(".closedLevel ion-icon").classList.add("none");
+    element.querySelector(".levels").classList.remove("none");
+    element.classList.remove("closedFolder");
+}
+
+function checkOthersCheckboxLevels() {
+    const qtd = document.querySelectorAll(".creatingLevels .bas-content li").length;
+
+    for (let i = 1; i <= qtd; i++) {
+        document.querySelector(`.Level${i} .closedLevel ion-icon`).classList.remove("none");
+        document.querySelector(`.Level${i} .levels`).classList.add("none");
+        document.querySelector(`.Level${i}`).classList.add("closedFolder");
     }
 }
 
@@ -266,6 +318,8 @@ function checkErroInfoBasics(pos) { // Tratamento de erros para criação de nov
         error[pos].classList.add("none");
     }
 }
+
+// Start a Quizz
 
 function getOneQuizz(element) { // Começar quizz
     //create class for one quizz

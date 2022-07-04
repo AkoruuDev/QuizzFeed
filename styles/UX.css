@@ -14,12 +14,12 @@ button:hover {
     background-color: var(--hover-background);
 }
 
-input:hover, input:focus {
+input:hover, input:focus, textarea:hover, textarea:focus {
     background-color: var(--hover-white);
     color: var(--black);
 }
 
-.back:hover{
+.back-home:hover{
     background-color: transparent;
     color: var(--hover-text-base);
 }
